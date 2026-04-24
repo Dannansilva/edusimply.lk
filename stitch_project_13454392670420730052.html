@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>edusimply.lk - The Cinematic Frontier of Digital Education</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#ffd9e2",
+                      "background": "#0c1324",
+                      "primary-fixed-dim": "#ffb1c8",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "on-tertiary-container": "#282a2a",
+                      "inverse-primary": "#b90062",
+                      "surface-variant": "#2e3447",
+                      "error": "#ffb4ab",
+                      "surface-dim": "#0c1324",
+                      "on-secondary-container": "#adb4ce",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-primary-fixed": "#3e001d",
+                      "on-surface-variant": "#e3bdc6",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "surface-container-low": "#151b2d",
+                      "inverse-on-surface": "#2a3043",
+                      "on-primary": "#650033",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "outline-variant": "#5b3f47",
+                      "surface-container-highest": "#2e3447",
+                      "on-error": "#690005",
+                      "primary-container": "#ff4895",
+                      "secondary-container": "#3f465c",
+                      "on-tertiary": "#2f3131",
+                      "primary": "#ffb1c8",
+                      "surface-container-lowest": "#070d1f",
+                      "surface-tint": "#ffb1c8",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "secondary-fixed": "#dae2fd",
+                      "on-primary-container": "#58002c",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#aa8891",
+                      "inverse-surface": "#dce1fb",
+                      "surface-container-high": "#23293c",
+                      "surface-container": "#191f31",
+                      "surface": "#0c1324",
+                      "surface-bright": "#33394c",
+                      "tertiary": "#c6c6c7",
+                      "on-surface": "#dce1fb",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#8e004a",
+                      "on-background": "#dce1fb",
+                      "secondary": "#bec6e0",
+                      "tertiary-container": "#909191",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-secondary": "#283044"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "max-width": "1440px",
+                      "unit": "4px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "display-2xl": [
+                              "Space Grotesk"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-2xl": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom Utilities for the 2028 Cinematic Aesthetic */
+        .glass-panel {
+            background: rgba(12, 19, 36, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1);
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px 0px rgba(255, 177, 200, 0.3);
+        }
+        
+        .neon-glow-hover:hover {
+            box-shadow: 0 0 30px 5px rgba(255, 177, 200, 0.5);
+            border-color: rgba(255, 177, 200, 0.8);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 177, 200, 0.6);
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden relative grid-bg">
+<!-- Ambient Background Glows -->
+<div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary-container opacity-20 blur-[150px] pointer-events-none z-[-1]"></div>
+<div class="fixed bottom-[-20%] right-[-10%] w-[40%] h-[40%] rounded-full bg-inverse-primary opacity-20 blur-[120px] pointer-events-none z-[-1]"></div>
+<!-- TopAppBar from JSON -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-12 h-20 bg-slate-950/40 backdrop-blur-2xl border-b border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+<div class="text-2xl font-black text-white italic tracking-tighter drop-shadow-[0_0_10px_rgba(255,30,140,0.6)] font-['Space_Grotesk'] tracking-tight">
+            edusimply.lk
+        </div>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="text-pink-500 font-bold border-b-2 border-pink-500 pb-1 h-full flex items-center font-['Space_Grotesk'] tracking-tight hover:bg-white/5 transition-all duration-300 scale-95 active:opacity-80" href="#">Subjects</a>
+<a class="text-slate-300 hover:text-white transition-colors h-full flex items-center font-['Space_Grotesk'] tracking-tight hover:bg-white/5 transition-all duration-300 scale-95 active:opacity-80" href="#">About</a>
+<a class="text-slate-300 hover:text-white transition-colors h-full flex items-center font-['Space_Grotesk'] tracking-tight hover:bg-white/5 transition-all duration-300 scale-95 active:opacity-80" href="#">Contact</a>
+<a class="text-slate-300 hover:text-white transition-colors h-full flex items-center font-['Space_Grotesk'] tracking-tight hover:bg-white/5 transition-all duration-300 scale-95 active:opacity-80" href="#">Academy</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:block px-6 py-2 rounded-full border border-white/20 text-slate-300 hover:text-white hover:bg-white/5 transition-all font-label-caps text-label-caps">
+                Login
+            </button>
+<button class="px-6 py-2 rounded-full bg-primary-container text-white font-label-caps text-label-caps neon-glow hover:bg-primary-fixed-dim transition-all shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.2)]">
+                Join Now
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop flex flex-col gap-32">
+<!-- 1. Hero Section -->
+<section class="relative min-h-[870px] flex flex-col md:flex-row items-center gap-12 mt-12 z-10">
+<!-- Content Left -->
+<div class="flex-1 flex flex-col gap-8 items-start">
+<div class="glass-panel px-4 py-2 rounded-full border border-primary/30 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">The Future of Personalized Learning</span>
+</div>
+<h1 class="font-display-2xl text-display-2xl text-white">
+                    Edexcel &amp; <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-inverse-primary text-glow">Cambridge</span> <br/>
+                    Classes
+                </h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-xl">
+                    Experience a cinematic approach to education. High-tech, immersive learning environments designed for the modern student aiming for academic excellence.
+                </p>
+<div class="flex gap-6 mt-4">
+<button class="px-8 py-4 rounded-full bg-primary-container text-white font-label-caps text-label-caps tracking-widest neon-glow hover:bg-primary-fixed-dim transition-all shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.2)] flex items-center gap-3">
+                        ENROLL NOW
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+<button class="px-8 py-4 rounded-full glass-panel text-white font-label-caps text-label-caps tracking-widest border border-white/20 hover:bg-white/10 transition-all flex items-center gap-3">
+<span class="material-symbols-outlined">play_circle</span>
+                        WATCH INTRO
+                    </button>
+</div>
+</div>
+<!-- Image Right - 3D Floating Effect -->
+<div class="flex-1 relative w-full h-[600px] flex justify-center items-center">
+<!-- Decorative Tech Rings -->
+<div class="absolute w-[120%] h-[120%] rounded-full border border-primary/10 border-dashed animate-[spin_60s_linear_infinite] z-0"></div>
+<div class="absolute w-[90%] h-[90%] rounded-full border border-secondary/20 animate-[spin_40s_linear_infinite_reverse] z-0"></div>
+<!-- Main Image Container -->
+<div class="relative z-10 w-full h-full glass-panel rounded-3xl border border-white/10 overflow-hidden transform hover:scale-[1.02] transition-transform duration-700 shadow-2xl">
+<img alt="Tutor" class="w-full h-full object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" data-alt="Professional female tutor in a high-tech modern setting, glowing screen reflections, dark cinematic lighting, neon pink accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBypIst2b7QoDT8oBQOMv--aeFIBwGmcYZ5ngeMGTFsPxEXLak0M5r0fmoeEnRiN93LoP9xXTIJFvsGm4Y_GFQrTtl90vPIBar150jBMStuRqsF0aDLtfH2IKffukeEg1McY4Php9WS6JCP4eUAHid14H4jI0Vanqi6BygMcTQlRB8W2gbjvDECAOwL3Z8w1ptO8_snUSXMMQUpL3ip3qiDzXRC6HlQ52PPqP37dgZzSYMjf_sBBYm8os793CkUlqacrLfGxUNBUaqP"/>
+<!-- Tech Overlay Elements -->
+<div class="absolute top-6 left-6 glass-panel px-4 py-2 rounded-lg border border-primary/20 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">data_usage</span>
+<span class="font-label-caps text-label-caps text-white">Live Metrics</span>
+</div>
+<div class="absolute bottom-6 right-6 glass-panel p-4 rounded-xl border border-white/10 flex flex-col gap-2 max-w-[200px]">
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+<span class="font-label-caps text-label-caps text-secondary text-right">Student Success Rate 85%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Feature Highlights (Bento Grid) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+<div class="glass-panel p-8 rounded-2xl border border-white/10 flex flex-col gap-4 hover:border-primary/50 transition-colors duration-300">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white">4+ Years Experience</h3>
+<p class="font-body-md text-body-md text-secondary">Proven track record in delivering high-tier academic results across demanding syllabi.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl border border-white/10 flex flex-col gap-4 hover:border-primary/50 transition-colors duration-300">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white">Individual &amp; Group</h3>
+<p class="font-body-md text-body-md text-secondary">Tailored session formats to suit varying learning velocities and cognitive styles.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl border border-white/10 flex flex-col gap-4 hover:border-primary/50 transition-colors duration-300">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white">Grades 8 - A/L</h3>
+<p class="font-body-md text-body-md text-secondary">Comprehensive curriculum coverage from foundational middle school to advanced levels.</p>
+</div>
+</section>
+<!-- 3. Subjects Grid -->
+<section class="flex flex-col gap-12 relative z-10 pt-16">
+<div class="flex flex-col items-center text-center gap-4">
+<h2 class="font-display-lg text-display-lg text-white">Core Subjects</h2>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl">Master the sciences with our specialized, high-intensity modules designed for complete comprehension.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Subject Card 1 -->
+<div class="group relative h-80 rounded-2xl overflow-hidden glass-panel border border-white/10 neon-glow-hover transition-all duration-500 cursor-pointer">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent z-10"></div>
+<img alt="Biology" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700" data-alt="Abstract macro shot of glowing microscopic cells, biology theme, dark background, neon pink and blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoHkNiL7MFsnoXN4BqjIEqYY3Dcq1szY6feGgSQVK30HPNoGcjHexJzOUhapLxEjS2W1eul3Uc-UARQUFd0ihp82QIL9V1p-wKR8_2xBjvlj-c-dBHYhGfY_agR-O3Y-Sellzl-g02Hpam6HaBeW2b-8mY17PAp9EwSP9ripZHT_8Qrhn06m-lUZUtH43M8X-UOBzFZVE8oufbK-8Jl3fzJAvPug5jW8OppbVbjhpWRWfQF06OtvW5KVVzFwJ2MmJuKwVrUY3gbAm9"/>
+<div class="absolute inset-0 z-20 p-8 flex flex-col justify-end gap-2">
+<div class="w-10 h-10 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center border border-primary/50 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">biotech</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white group-hover:text-primary transition-colors">Biology</h3>
+<p class="font-body-md text-body-md text-secondary opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Molecular, Cellular &amp; Human Systems</p>
+</div>
+</div>
+<!-- Subject Card 2 -->
+<div class="group relative h-80 rounded-2xl overflow-hidden glass-panel border border-white/10 neon-glow-hover transition-all duration-500 cursor-pointer">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent z-10"></div>
+<img alt="Chemistry" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700" data-alt="Glowing neon chemical compounds and molecular structures floating in dark space, chemistry theme" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBlnRXHCax5gVMITXe7SBYVmiYOAXPQZIHjoFSsAznYtO9b1emdieu-8kHkkU0A3GgScBB0bibRD838NFlTOijoInSRHf7ftHmAh-IZ3v0L1fOGmgGd4ZKxty1PHK_cXg-i8uJCb4PkLQ2wY1-HyuutkvZ8v88qx7Ad-8SxHIaUGzLSQEYnZZHICWogC6jenhieZNlSJLMh1khtnfPip64SiMTvJfObimcEwgFjFfAdzzWGYqRhLtiwIpuUqfxtQh9pim8wta7sOr9"/>
+<div class="absolute inset-0 z-20 p-8 flex flex-col justify-end gap-2">
+<div class="w-10 h-10 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center border border-primary/50 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">science</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white group-hover:text-primary transition-colors">Chemistry</h3>
+<p class="font-body-md text-body-md text-secondary opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Organic, Inorganic &amp; Physical Dynamics</p>
+</div>
+</div>
+<!-- Subject Card 3 -->
+<div class="group relative h-80 rounded-2xl overflow-hidden glass-panel border border-white/10 neon-glow-hover transition-all duration-500 cursor-pointer">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent z-10"></div>
+<img alt="Physics" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700" data-alt="Abstract depiction of quantum physics, glowing particles, wave functions, dark atmospheric lighting, futuristic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDCr1lu9O07TXW8pm8lHA-aj1YLB792DRPjt3oncWhB3RCjn47PR-loQH5Ijee0r5AgHmpiKTVKWt1CnyoS2A28JHE8yfty5jT-QwZowy8dj256kbg2kvn7UttU-shGonMQ0Iinrt4ndaTEyOgAORbFP-Hobcn24njvIchn38ipXxHTwx4KHgP42-txs-B2RD4y3UcZXWTFc1INWrYNBx9ng0mPZU85cCwGAp_9npsmnwYLzaLNARQtQ-J4qgqMhLfMx4P4EY1Can6"/>
+<div class="absolute inset-0 z-20 p-8 flex flex-col justify-end gap-2">
+<div class="w-10 h-10 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center border border-primary/50 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">language</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white group-hover:text-primary transition-colors">Physics</h3>
+<p class="font-body-md text-body-md text-secondary opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Mechanics, Fields &amp; Quantum Theory</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer from JSON -->
+<footer class="w-full flex flex-col md:flex-row justify-between items-center px-16 py-12 gap-8 bg-slate-950 border-t border-pink-500/20 font-['Space_Grotesk'] uppercase tracking-widest text-[12px] text-pink-500 dark:text-pink-400 opacity-100 hover:opacity-80">
+<div class="text-xl font-bold text-slate-500">
+            edusimply.lk
+        </div>
+<p class="text-slate-500 text-center md:text-left">
+            © 2028 edusimply.lk. Pioneering the cinematic frontier of digital education.
+        </p>
+<nav class="flex gap-6">
+<a class="text-slate-500 hover:text-pink-400 transition-colors" href="#">Privacy</a>
+<a class="text-slate-500 hover:text-pink-400 transition-colors" href="#">Terms</a>
+<a class="text-slate-500 hover:text-pink-400 transition-colors" href="#">Research</a>
+<a class="text-slate-500 hover:text-pink-400 transition-colors" href="#">Contact</a>
+</nav>
+</footer>
+</body></html>
