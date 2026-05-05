@@ -1,13 +1,15 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
 
-type Particle = { x: number; y: number; z: number; speedY: number; size: number; glow: boolean };
-
-type RenderElement = 
-  | { type: 'particle'; z: number; x: number; y: number; scale: number; glow: boolean; size: number }
-  | { type: 'backbone'; z: number; x: number; y: number; scale: number }
-  | { type: 'rung'; z: number; x1: number; y1: number; x2: number; y2: number; scale: number }
-  | { type: 'node'; z: number; x: number; y: number; scale: number };
+type Particle = { 
+  x: number; 
+  y: number; 
+  z: number; 
+  vx: number; 
+  vy: number; 
+  size: number; 
+  baseAlpha: number;
+};
 
 export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -20,177 +22,142 @@ export default function AnimatedBackground() {
 
     let width = 0;
     let height = 0;
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
 
     const handleResize = () => {
-      // Very large buffer to maintain quality and cover all edges when rotated via CSS
-      width = canvas.width = window.innerWidth * 1.2;
-      height = canvas.height = window.innerHeight * 1.5;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
     };
     handleResize();
 
     window.addEventListener('resize', handleResize);
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
 
     const particles: Particle[] = [];
-    for (let i = 0; i < 60; i++) {
+    const particleCount = 200; // More dense but smaller particles
+
+    for (let i = 0; i < particleCount; i++) {
         particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            z: Math.random() * 1000,
-            speedY: (Math.random() - 0.5) * 0.4 - 0.1, 
-            size: Math.random() * 3 + 1,
-            glow: Math.random() > 0.6 
+            z: Math.random() * 1000 + 100, // Depth from 100 to 1100
+            vx: (Math.random() - 0.5) * 0.15, 
+            vy: (Math.random() - 0.5) * 0.15, 
+            size: Math.random() * 1.5 + 0.2, // Much smaller, sharper particles (0.2 to 1.7)
+            baseAlpha: Math.random() * 0.4 + 0.1 // Max alpha 0.5
         });
     }
 
+    const primaryPink = '230, 126, 156'; // matches CSS primary-container
+    const inversePink = '255, 177, 197'; // matches CSS inverse-primary
+
     let time = 0;
-    
-    // Palette targeting the ultra-realistic stock image style
-    const primaryPink = '230, 100, 150'; // Bright Pink Matches glowing nodes
-    const backboneBlue = '160, 185, 230'; // Light frosty blue core
-    const deepBlue = '80, 100, 150'; // Deeper indigo blue structure
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
+      time += 0.003;
 
-      time += 0.015; // Drives the pure 3D rotation around the Y-axis
+      const focalLength = 400;
 
-      const focalLength = 800; // Realistic depth of field
-      const dnaRadius = Math.min(width, height) * 0.15; // Massive structure size
-      const centerX = width * 0.5;
-      const centerY = height * 0.5;
-
-      const elements: RenderElement[] = [];
-
-      // 1. Plot atmospheric floating particles
-      particles.forEach(p => {
-          p.y += p.speedY;
-          if (p.y < -50) p.y = height + 50; 
-          
-          const scale = focalLength / (focalLength + p.z);
-          elements.push({
-              type: 'particle', z: p.z, x: p.x * scale + centerX * (1-scale), y: p.y, scale, glow: p.glow, size: p.size
-          });
-      });
-
-      // 2. Generate Massive 3D DNA Construction
-      const numRungs = 80; // High density calculation
-      const overallHeight = height * 2.5; 
+      // Draw subtle ambient glow orbs - significantly reduced opacity
+      const orb1X = width * 0.3 + Math.sin(time) * 200;
+      const orb1Y = height * 0.4 + Math.cos(time * 0.8) * 150;
+      const gradient1 = ctx.createRadialGradient(orb1X, orb1Y, 0, orb1X, orb1Y, 600);
+      gradient1.addColorStop(0, `rgba(${primaryPink}, 0.03)`); // Very subtle
+      gradient1.addColorStop(1, 'rgba(250, 248, 254, 0)'); // fade to surface
       
-      for (let i = -numRungs; i <= numRungs; i++) {
-          const y = i * (overallHeight / (numRungs * 2)); 
-          
-          // Pure Trigonometric 3D Rotation Calculation
-          const angle = y * 0.005 + time * 2.0; 
-          
-          // Majestic swaying curve shifting through space
-          const curveX = Math.sin(y * 0.001 - time * 0.2) * 150; 
-          const offsetZ = 800; 
+      const orb2X = width * 0.7 + Math.cos(time * 1.2) * 250;
+      const orb2Y = height * 0.6 + Math.sin(time * 0.9) * 200;
+      const gradient2 = ctx.createRadialGradient(orb2X, orb2Y, 0, orb2X, orb2Y, 700);
+      gradient2.addColorStop(0, `rgba(${inversePink}, 0.02)`); // Very subtle
+      gradient2.addColorStop(1, 'rgba(250, 248, 254, 0)');
 
-          // Strand 1 Coords
-          const x1 = Math.cos(angle) * dnaRadius;
-          const z1 = Math.sin(angle) * dnaRadius;
-          
-          // Strand 2 Coords (Offset by precisely half a rotation / Pi)
-          const x2 = Math.cos(angle + Math.PI) * dnaRadius;
-          const z2 = Math.sin(angle + Math.PI) * dnaRadius;
-          
-          // Projection 3D -> 2D Space
-          const scale1 = focalLength / (focalLength + z1 + offsetZ);
-          const drawX1 = (x1 + curveX) * scale1 + centerX;
-          const drawY1 = y * scale1 + centerY;
-          
-          const scale2 = focalLength / (focalLength + z2 + offsetZ);
-          const drawX2 = (x2 + curveX) * scale2 + centerX;
-          const drawY2 = y * scale2 + centerY;
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.fillStyle = gradient1;
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = gradient2;
+      ctx.fillRect(0, 0, width, height);
+      ctx.globalCompositeOperation = 'source-over';
 
-          // Build thick, textured "organic" cable backbones efficiently using clustered geometry
-          for (let b = 0; b < 3; b++) {
-             const bumpOffset = Math.sin(y + b * 2) * 6; 
-             elements.push({
-                 type: 'backbone', z: z1 + offsetZ + b, x: drawX1 + bumpOffset*scale1, y: drawY1 + bumpOffset*scale1, scale: scale1
-             });
-             elements.push({
-                 type: 'backbone', z: z2 + offsetZ + b, x: drawX2 + bumpOffset*scale2, y: drawY2 + bumpOffset*scale2, scale: scale2
-             });
+      // Update and Draw Particles
+      particles.forEach(p => {
+          // Drifting
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Mouse parallax interaction
+          const dx = mouseX - (width / 2);
+          const dy = mouseY - (height / 2);
+          
+          // Parallax shift based on Z depth
+          const parallaxX = (dx / p.z) * 5;
+          const parallaxY = (dy / p.z) * 5;
+
+          // Screen wrapping
+          const screenX = p.x + parallaxX;
+          const screenY = p.y + parallaxY;
+
+          if (screenX < -100) p.x = width + 100;
+          if (screenX > width + 100) p.x = -100;
+          if (screenY < -100) p.y = height + 100;
+          if (screenY > height + 100) p.y = -100;
+
+          // Project 3D -> 2D
+          const scale = focalLength / p.z;
+          const drawSize = p.size * scale * 2; // Sharp particles
+          const drawAlpha = p.baseAlpha * Math.min(1, scale * 1.5); // Fade particles further away
+
+          ctx.beginPath();
+          ctx.arc(screenX, screenY, drawSize, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${primaryPink}, ${drawAlpha})`;
+          
+          // Only very slight glow for the absolute closest particles
+          if (p.size > 1.2 && scale > 0.8) {
+             ctx.shadowBlur = 5;
+             ctx.shadowColor = `rgba(${primaryPink}, ${drawAlpha * 0.5})`;
+          } else {
+             ctx.shadowBlur = 0;
           }
-
-          // Connecting Rings / DNA Rungs
-          const midZ = (z1 + z2)/2 + offsetZ;
-          elements.push({
-              type: 'rung', z: midZ, x1: drawX1, y1: drawY1, x2: drawX2, y2: drawY2, scale: (scale1+scale2)/2
-          });
-
-          // Embed high intensity glowing nodes periodically
-          if (i % 4 === 0) {
-              elements.push({
-                  type: 'node', z: z1 + offsetZ - 10, x: drawX1, y: drawY1, scale: scale1 * 1.2
-              });
-          }
-          if ((i+2) % 5 === 0) {
-              elements.push({
-                  type: 'node', z: z2 + offsetZ - 10, x: drawX2, y: drawY2, scale: scale2 * 1.2
-              });
-          }
-      }
-
-      // 3. Absolute Z-Depth Rendering Sequence (Painter's Algorithm)
-      elements.sort((a, b) => b.z - a.z);
-
-      // 4. Render Pipeline
-      elements.forEach(el => {
-          if (el.type === 'particle') {
-              ctx.beginPath();
-              ctx.arc(el.x, el.y, el.size * el.scale, 0, Math.PI * 2);
-              if (el.glow) {
-                  ctx.fillStyle = `rgba(255, 255, 255, 0.9)`;
-                  ctx.shadowBlur = 25 * el.scale;
-                  ctx.shadowColor = `rgba(${primaryPink}, 1)`;
-              } else {
-                  ctx.fillStyle = `rgba(${primaryPink}, 0.5)`;
-                  ctx.shadowBlur = 0;
-              }
-              ctx.fill();
-          } else if (el.type === 'rung') {
-              // Thick base pair foundations
-              ctx.beginPath();
-              ctx.moveTo(el.x1, el.y1);
-              ctx.lineTo(el.x2, el.y2);
-              ctx.strokeStyle = `rgba(${deepBlue}, ${0.5 * el.scale})`;
-              ctx.lineWidth = 14 * el.scale; 
-              ctx.lineCap = 'round';
-              ctx.stroke();
-              
-              // Internal highlighted core of rung
-              ctx.beginPath();
-              ctx.moveTo(el.x1, el.y1);
-              ctx.lineTo(el.x2, el.y2);
-              ctx.strokeStyle = `rgba(${backboneBlue}, ${0.8 * el.scale})`;
-              ctx.lineWidth = 6 * el.scale;
-              ctx.stroke();
-          } else if (el.type === 'backbone') {
-              // Primary 3D cluster sphere mimicking organic biological texture
-              ctx.beginPath();
-              ctx.arc(el.x, el.y, 22 * el.scale, 0, Math.PI * 2);
-              ctx.fillStyle = `rgba(${deepBlue}, 0.95)`;
-              ctx.shadowBlur = 0;
-              ctx.fill();
-              
-              // Specular lighting highlight creating a 3D spherical volume optical illusion
-              ctx.beginPath();
-              ctx.arc(el.x - 5*el.scale, el.y - 5*el.scale, 7 * el.scale, 0, Math.PI * 2);
-              ctx.fillStyle = `rgba(${backboneBlue}, 0.9)`;
-              ctx.fill();
-          } else if (el.type === 'node') {
-              // Vibrant pink bio-illuminating blooms
-              ctx.beginPath();
-              ctx.arc(el.x, el.y, 8 * el.scale, 0, Math.PI * 2);
-              ctx.fillStyle = `rgba(255, 255, 255, 1)`;
-              ctx.shadowBlur = 40 * el.scale; 
-              ctx.shadowColor = `rgba(${primaryPink}, 1)`;
-              ctx.fill();
-              ctx.shadowBlur = 0; // Explicit reset
-          }
+          
+          ctx.fill();
       });
+
+      // Draw subtle connecting lines for nearby particles (Constellation effect)
+      ctx.lineWidth = 0.4;
+      for (let i = 0; i < particles.length; i++) {
+         for (let j = i + 1; j < particles.length; j++) {
+            const p1 = particles[i];
+            const p2 = particles[j];
+            
+            // Only connect if Z depth is similar and X/Y are close
+            if (Math.abs(p1.z - p2.z) > 100) continue;
+            
+            const dx1 = mouseX - (width / 2);
+            const dy1 = mouseY - (height / 2);
+            const x1 = p1.x + (dx1 / p1.z) * 5;
+            const y1 = p1.y + (dy1 / p1.z) * 5;
+            
+            const x2 = p2.x + (dx1 / p2.z) * 5;
+            const y2 = p2.y + (dy1 / p2.z) * 5;
+
+            const dist = Math.hypot(x1 - x2, y1 - y2);
+            const connectDistance = 80;
+            if (dist < connectDistance) {
+               const scale = focalLength / ((p1.z + p2.z) / 2);
+               // Very subtle connecting lines
+               const alpha = Math.pow((1 - dist / connectDistance), 2) * 0.1 * scale;
+               ctx.beginPath();
+               ctx.moveTo(x1, y1);
+               ctx.lineTo(x2, y2);
+               ctx.strokeStyle = `rgba(${primaryPink}, ${alpha})`;
+               ctx.stroke();
+            }
+         }
+      }
 
       requestAnimationFrame(render);
     };
@@ -203,11 +170,13 @@ export default function AnimatedBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-[-2] flex items-center justify-center">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-[-2] bg-surface">
       <canvas 
           ref={canvasRef} 
-          className="absolute origin-center w-[150vw] h-[150vh] rotate-[30deg]" 
+          className="absolute origin-center w-full h-full" 
       />
+      {/* Subtle grid overlay to enhance depth */}
+      <div className="absolute inset-0 grid-bg opacity-30 mix-blend-multiply"></div>
     </div>
   );
 }
