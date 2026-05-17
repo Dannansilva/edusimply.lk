@@ -64,12 +64,12 @@ export default function Hero3D() {
         </motion.div>
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
         
         {/* Left Content Area */}
         <motion.div 
           style={{ opacity, y: useTransform(smoothScroll, [0, 1], [0, 100]) }}
-          className="flex flex-col gap-8 items-start"
+          className="flex flex-col gap-8 items-center text-center lg:items-start lg:text-left"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -90,13 +90,13 @@ export default function Hero3D() {
             Immerse yourself in a premium laboratory experience. High-tech, interactive environments designed for the modern student aiming for academic excellence.
           </p>
           
-          <div className="flex flex-wrap gap-6 mt-4">
-            <button className="px-8 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-surface font-label-caps text-label-caps tracking-widest neon-glow hover:neon-glow-hover transition-all duration-300 shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.2)] flex items-center gap-3 relative overflow-hidden group">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 mt-4 w-full sm:w-auto">
+            <button className="w-full sm:w-auto justify-center px-8 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-surface font-label-caps text-label-caps tracking-widest neon-glow hover:neon-glow-hover transition-all duration-300 shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.2)] flex items-center gap-3 relative overflow-hidden group">
               <span className="absolute inset-0 bg-white/20 translate-y-[-100%] group-hover:translate-y-[100%] transition-transform duration-500 ease-in-out"></span>
               ENROLL NOW
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="px-8 py-4 rounded-full glass-panel text-on-surface font-label-caps text-label-caps tracking-widest border border-outline hover:bg-surface/20 hover:border-primary/50 transition-all duration-300 flex items-center gap-3 group">
+            <button className="w-full sm:w-auto justify-center px-8 py-4 rounded-full glass-panel text-on-surface font-label-caps text-label-caps tracking-widest border border-outline hover:bg-surface/20 hover:border-primary/50 transition-all duration-300 flex items-center gap-3 group">
               <PlayCircle size={20} className="text-primary group-hover:scale-110 transition-transform" />
               WATCH INTRO
             </button>

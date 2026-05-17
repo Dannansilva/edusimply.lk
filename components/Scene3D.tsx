@@ -141,13 +141,13 @@ function FloatingObjects() {
       {/* Removed Environment to stop washing out the dark theme, using strong colored lights instead */}
 
       <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-        <group ref={group1Ref} position={[isMobile ? 0 : 3, 0, -5]}>
+        <group ref={group1Ref} position={[isMobile ? 0 : 3, 0, -5]} scale={isMobile ? 0.4 : 1}>
            <ScienceAtom />
         </group>
       </Float>
 
       <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1.5}>
-        <group ref={group2Ref} position={[isMobile ? 0 : -4, -8, -8]}>
+        <group ref={group2Ref} position={[isMobile ? 0 : -4, -8, -8]} scale={isMobile ? 0.4 : 1}>
            <ScienceMolecule />
         </group>
       </Float>

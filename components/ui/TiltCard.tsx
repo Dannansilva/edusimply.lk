@@ -63,12 +63,35 @@ export function TiltCard({
     setIsHovered(true);
   };
 
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!ref.current || e.touches.length === 0) return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+
+    const touch = e.touches[0];
+    // Calculate touch position relative to the center of the card (-0.5 to 0.5)
+    let touchX = (touch.clientX - rect.left) / width - 0.5;
+    let touchY = (touch.clientY - rect.top) / height - 0.5;
+    
+    // Clamp values so it doesn't spin out of control if touch moves slightly outside element
+    touchX = Math.max(-0.5, Math.min(0.5, touchX));
+    touchY = Math.max(-0.5, Math.min(0.5, touchY));
+
+    x.set(touchX);
+    y.set(touchY);
+  };
+
   return (
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
+      onTouchStart={handleMouseEnter}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleMouseLeave}
       onClick={onClick}
       style={{
         rotateX,

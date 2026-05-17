@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-12 h-20 bg-surface/80 backdrop-blur-2xl border-b border-outline-variant shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
-      <div className="text-2xl font-black text-on-surface italic tracking-tighter drop-shadow-[0_0_10px_rgba(255,30,140,0.6)] font-['Space_Grotesk']">
+    <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 md:px-12 h-20 bg-surface/80 backdrop-blur-2xl border-b border-outline-variant shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+      <div className="text-xl md:text-2xl font-black text-on-surface italic tracking-tighter drop-shadow-[0_0_10px_rgba(255,30,140,0.6)] font-['Space_Grotesk']">
         edusimply.lk
       </div>
       <nav className="hidden md:flex gap-8 items-center h-full">
