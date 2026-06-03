@@ -1,55 +1,19 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
-
-@theme inline {
-  --color-background: #faf8fe;
-  --color-error: #ba1a1a;
-  --color-error-container: #ffdad6;
-  --color-inverse-on-surface: #f2f0f6;
-  --color-inverse-primary: #ffb1c5;
-  --color-inverse-surface: #2f3035;
-  --color-on-background: #1a1b1f;
-  --color-on-error: #ffffff;
-  --color-on-error-container: #93000a;
-  --color-on-primary: #ffffff;
-  --color-on-primary-container: #651634;
-  --color-on-primary-fixed: #3f001a;
-  --color-on-primary-fixed-variant: #7b2945;
-  --color-on-secondary: #ffffff;
-  --color-on-secondary-container: #656468;
-  --color-on-secondary-fixed: #1b1b1f;
-  --color-on-secondary-fixed-variant: #47464b;
-  --color-on-surface: #1a1b1f;
-  --color-on-surface-variant: #544246;
-  --color-on-tertiary: #ffffff;
-  --color-on-tertiary-container: #323635;
-  --color-on-tertiary-fixed: #181c1b;
-  --color-on-tertiary-fixed-variant: #434846;
-  --color-outline: #867276;
-  --color-outline-variant: #d9c0c5;
-  --color-primary: #99405d;
-  --color-primary-container: #e67e9c;
-  --color-primary-fixed: #ffd9e1;
-  --color-primary-fixed-dim: #ffb1c5;
-  --color-secondary: #5f5e62;
-  --color-secondary-container: #e4e1e7;
-  --color-secondary-fixed: #e4e1e7;
-  --color-secondary-fixed-dim: #c8c5cb;
-  --color-surface: #faf8fe;
-  --color-surface-bright: #faf8fe;
-  --color-surface-container: #efedf3;
-  --color-surface-container-high: #e9e7ed;
-  --color-surface-container-highest: #e3e2e7;
-  --color-surface-container-low: #f4f3f8;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-dim: #dbd9df;
-  --color-surface-tint: #99405d;
-  --color-surface-variant: #e3e2e7;
-  --color-tertiary: #5b5f5e;
-  --color-tertiary-container: #9b9f9d;
-  --color-tertiary-fixed: #e0e3e1;
-  --color-tertiary-fixed-dim: #c4c7c5;
+@theme {
+  --color-background: #F2F8F2;
+  --color-surface: #FFFFFF;
+  --color-surface-variant: #F9FBF9;
+  --color-on-background: #1A1B1F;
+  --color-on-surface: #1A1B1F;
+  --color-on-surface-variant: #5F6E65;
+  --color-primary: #E85D92;
+  --color-primary-container: #F5A1BD;
+  --color-inverse-primary: #E34476;
+  --color-success: #D9EAD8;
+  --color-error: #E73C75;
+  --color-outline: #E2ECE5;
+  --color-outline-variant: #EEF4F0;
 
   --spacing-margin-desktop: 40px;
   --spacing-max-width: 1280px;
@@ -85,36 +49,41 @@
   --text-display-lg--letter-spacing: -0.01em;
 }
 
+html, body {
+  background-color: #F2F8F2;
+  color: #1A1B1F;
+}
+
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-/* Updated Utilities for the Real Project 13454392670420730052 Light Aesthetic */
+/* Updated Utilities for edusimply.lk Light Premium Aesthetic */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 1);
+  box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.6), 0 8px 32px 0 rgba(0, 0, 0, 0.04);
 }
 
 .neon-glow {
-  box-shadow: 0 0 20px 0px rgba(230, 126, 156, 0.4);
+  box-shadow: 0 0 20px 0px rgba(232, 93, 146, 0.15);
 }
 
 .neon-glow-hover:hover {
-  box-shadow: 0 0 30px 5px rgba(230, 126, 156, 0.6);
-  border-color: rgba(230, 126, 156, 0.8);
+  box-shadow: 0 0 30px 5px rgba(232, 93, 146, 0.25);
+  border-color: rgba(232, 93, 146, 0.4);
 }
 
 .text-glow {
-  text-shadow: 0 0 10px rgba(230, 126, 156, 0.4);
+  text-shadow: 0 0 12px rgba(232, 93, 146, 0.3);
 }
 
 .grid-bg {
   background-image: 
-      linear-gradient(to right, rgba(26,27,31,0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(26,27,31,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+      linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
 @keyframes dna-spin {
@@ -132,23 +101,79 @@
 
 @keyframes float {
   0%, 100% { transform: translateY(0px) translateX(0px); }
-  50% { transform: translateY(-20px) translateX(15px); }
+  50% { transform: translateY(-15px) translateX(10px); }
 }
 
 .animate-float {
-  animation: float 10s ease-in-out infinite;
+  animation: float 8s ease-in-out infinite;
 }
 
 .animate-float-slow {
-  animation: float 15s ease-in-out infinite reverse;
+  animation: float 12s ease-in-out infinite reverse;
 }
 
 @keyframes pan-slow {
-  0% { transform: translate(-50%, -50%) perspective(1200px) rotateY(-12deg) rotateX(-5deg) scale(1.0); }
-  50% { transform: translate(-43%, -57%) perspective(1200px) rotateY(12deg) rotateX(5deg) scale(1.25); }
-  100% { transform: translate(-55%, -45%) perspective(1200px) rotateY(-6deg) rotateX(2deg) scale(1.15); }
+  0% { transform: translate(-50%, -50%) perspective(1200px) rotateY(-8deg) rotateX(-3deg) scale(1.0); }
+  50% { transform: translate(-45%, -55%) perspective(1200px) rotateY(8deg) rotateX(3deg) scale(1.1); }
+  100% { transform: translate(-52%, -48%) perspective(1200px) rotateY(-4deg) rotateX(1deg) scale(1.05); }
 }
 
 .animate-bg-pan {
-  animation: pan-slow 18s ease-in-out infinite alternate;
+  animation: pan-slow 20s ease-in-out infinite alternate;
 }
+
+/* Custom Scrollbar for Light Theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F2F8F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9EAD8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E85D92;
+}
+
+/* Light Theme Visibility & Contrast Overrides */
+
+/* 1. Map transparent white border classes to the light outline variable */
+.border-white\/5:not(footer *):not([class*="bg-black"]), 
+.border-white\/10:not(footer *):not([class*="bg-black"]), 
+.border-white\/20:not(footer *):not([class*="bg-black"]), 
+.border-white\/30:not(footer *):not([class*="bg-black"]) {
+  border-color: var(--color-outline) !important;
+}
+
+/* 2. Override text-white classes for headings, paragraphs, and spans to ensure high readability,
+   excluding the dark footer, buttons, links, and badges */
+h1.text-white:not(footer *), 
+h2.text-white:not(footer *), 
+h3.text-white:not(footer *), 
+h4.text-white:not(footer *), 
+h5.text-white:not(footer *), 
+h6.text-white:not(footer *),
+p.text-white:not(footer *):not(button *):not(a *):not([class*="bg-"]):not([class*="from-"]),
+span.text-white:not(footer *):not(button *):not(a *):not([class*="bg-"]):not([class*="from-"]):not(.font-mono),
+div.text-white:not(footer *):not(button *):not(a *):not([class*="bg-"]):not([class*="from-"]):not([class*="bg-black"]):not(.relative) {
+  color: var(--color-on-background) !important;
+}
+
+/* 3. Ensure input and textarea field text is completely readable */
+input.text-white, textarea.text-white {
+  color: var(--color-on-background) !important;
+}
+
+/* 4. Adjust custom transparent background panels in light mode */
+.bg-surface\/40:not(footer *) {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 5. Correct SVG overlays in cards to be visible with light gray stroke */
+svg.text-white:not(footer *) {
+  color: var(--color-on-surface-variant) !important;
+  opacity: 0.12 !important;
+}
+

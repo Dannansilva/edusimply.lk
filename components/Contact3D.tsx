@@ -1,122 +1,291 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { useRef } from "react";
-import { Send, Mail, MapPin, Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { Send, Mail, MapPin, Phone, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function Contact3D() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
+  // Input fields state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
   });
 
-  const smoothScroll = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  // Focus tracking for floating labels
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  
+  // Validation / Submission states
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const y = useTransform(smoothScroll, [0, 1], [100, -50]);
-  const opacity = useTransform(smoothScroll, [0, 0.3], [0, 1]);
+  const handleFocus = (field: string) => setFocusedField(field);
+  const handleBlur = (field: string) => {
+    setFocusedField(null);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => {
+        const copy = { ...prev };
+        delete copy[name];
+        return copy;
+      });
+    }
+  };
+
+  const validate = () => {
+    const tempErrors: Record<string, string> = {};
+    if (!formData.name.trim()) tempErrors.name = "Full name is required";
+    if (!formData.email.trim()) {
+      tempErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      tempErrors.email = "Invalid email format";
+    }
+    if (!formData.phone.trim()) {
+      tempErrors.phone = "Phone number is required";
+    } else if (!/^[0-9+ ]{8,15}$/.test(formData.phone)) {
+      tempErrors.phone = "Invalid phone number";
+    }
+    if (!formData.message.trim()) tempErrors.message = "Message cannot be empty";
+    
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validate()) {
+      setIsSubmitted(true);
+      // Simulate API submit delay
+      setTimeout(() => {
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        setIsSubmitted(false);
+      }, 5000);
+    }
+  };
 
   return (
     <section 
-      ref={containerRef} 
-      className="relative min-h-[90vh] py-32 flex items-center justify-center overflow-hidden perspective-1000"
-      style={{ position: 'relative' }}
+      id="contact"
+      className="relative min-h-[90vh] py-24 md:py-36 flex items-center justify-center overflow-hidden bg-background border-t border-outline-variant"
     >
-      
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none"></div>
 
-      <motion.div 
-        style={{ y, opacity }}
-        className="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
-      >
-        {/* Left Info */}
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        {/* Left Column Info */}
         <div className="flex flex-col gap-8">
           <div className="inline-flex glass-panel px-4 py-2 rounded-full border border-primary/30 items-center gap-2 self-start">
-            <span className="font-label-caps text-label-caps text-primary tracking-widest uppercase">Get in Touch</span>
+            <span className="font-label-caps text-xs tracking-widest text-primary uppercase font-bold">Secure Your Spot</span>
           </div>
           
-          <h2 className="font-display-2xl text-[clamp(40px,4vw,64px)] leading-[1.1] text-on-surface font-bold">
-            Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-inverse-primary text-glow">Accelerate?</span>
+          <h2 className="font-display-2xl text-[36px] md:text-[56px] leading-[1.1] text-white font-bold">
+            Ready to <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container text-glow">
+              Accelerate?
+            </span>
           </h2>
           
-          <p className="font-body-lg text-lg text-on-surface-variant max-w-md">
-            Step into the future of education. Contact our admissions team to secure your place in our next cohort.
+          <p className="font-body-lg text-base md:text-lg text-on-surface-variant max-w-md leading-relaxed">
+            Step into the future of tuition. Complete the form to enroll in G.C.E. O/L mathematics and science cohorts.
           </p>
 
           <div className="flex flex-col gap-6 mt-4">
             <div className="flex items-center gap-4 group">
-              <div className="w-12 h-12 rounded-full glass-panel flex items-center justify-center border border-primary/20 group-hover:bg-primary/10 transition-colors">
+              <div className="w-12 h-12 rounded-full glass-panel flex items-center justify-center border border-white/5 group-hover:border-primary/30 transition-colors">
                 <Mail className="text-primary" size={20} />
               </div>
               <div>
-                <p className="text-sm text-on-surface-variant font-label-caps">Email</p>
-                <p className="font-bold text-on-surface">admissions@edusimply.lk</p>
+                <p className="text-xs text-on-surface-variant font-label-caps uppercase font-bold tracking-wider">Email Support</p>
+                <p className="font-bold text-white mt-0.5">admissions@edusimply.lk</p>
               </div>
             </div>
             
             <div className="flex items-center gap-4 group">
-              <div className="w-12 h-12 rounded-full glass-panel flex items-center justify-center border border-primary/20 group-hover:bg-primary/10 transition-colors">
+              <div className="w-12 h-12 rounded-full glass-panel flex items-center justify-center border border-white/5 group-hover:border-primary/30 transition-colors">
                 <Phone className="text-primary" size={20} />
               </div>
               <div>
-                <p className="text-sm text-on-surface-variant font-label-caps">Phone</p>
-                <p className="font-bold text-on-surface">+94 11 234 5678</p>
+                <p className="text-xs text-on-surface-variant font-label-caps uppercase font-bold tracking-wider">Call Admissions</p>
+                <p className="font-bold text-white mt-0.5">+94 11 234 5678</p>
               </div>
             </div>
 
             <div className="flex items-center gap-4 group">
-              <div className="w-12 h-12 rounded-full glass-panel flex items-center justify-center border border-primary/20 group-hover:bg-primary/10 transition-colors">
+              <div className="w-12 h-12 rounded-full glass-panel flex items-center justify-center border border-white/5 group-hover:border-primary/30 transition-colors">
                 <MapPin className="text-primary" size={20} />
               </div>
               <div>
-                <p className="text-sm text-on-surface-variant font-label-caps">Location</p>
-                <p className="font-bold text-on-surface">Colombo Innovation Tower, Sri Lanka</p>
+                <p className="text-xs text-on-surface-variant font-label-caps uppercase font-bold tracking-wider">Academic Centers</p>
+                <p className="font-bold text-white mt-0.5">Colombo & Online Streams, Sri Lanka</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Right Form */}
-        <motion.div 
-          className="glass-panel p-8 md:p-10 rounded-[32px] border border-white/40 shadow-2xl backdrop-blur-2xl transform-style-3d group relative"
-          whileHover={{ rotateY: -2, rotateX: 2, z: 20 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 rounded-[32px] pointer-events-none"></div>
+        {/* Right Column: Premium Form */}
+        <div className="glass-panel p-8 md:p-10 rounded-[32px] border border-white/5 shadow-2xl relative">
           
-          <form className="relative z-10 flex flex-col gap-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex flex-col gap-2">
-                <label className="font-label-caps text-xs text-on-surface-variant tracking-widest uppercase">First Name</label>
-                <input type="text" className="w-full bg-surface/50 border border-outline-variant rounded-xl px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all backdrop-blur-md" placeholder="John" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-label-caps text-xs text-on-surface-variant tracking-widest uppercase">Last Name</label>
-                <input type="text" className="w-full bg-surface/50 border border-outline-variant rounded-xl px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all backdrop-blur-md" placeholder="Doe" />
-              </div>
-            </div>
-            
-            <div className="flex flex-col gap-2">
-              <label className="font-label-caps text-xs text-on-surface-variant tracking-widest uppercase">Email Address</label>
-              <input type="email" className="w-full bg-surface/50 border border-outline-variant rounded-xl px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all backdrop-blur-md" placeholder="john@example.com" />
-            </div>
+          <AnimatePresence mode="wait">
+            {!isSubmitted ? (
+              <motion.form 
+                key="form"
+                onSubmit={handleSubmit}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex flex-col gap-6"
+              >
+                {/* Name field */}
+                <div className="relative w-full">
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    onFocus={() => handleFocus("name")}
+                    onBlur={() => handleBlur("name")}
+                    className={`w-full bg-surface/40 border rounded-2xl px-5 py-4 text-white focus:outline-none transition-all duration-300 backdrop-blur-md pt-6 pb-2 ${
+                      errors.name ? "border-error" : focusedField === "name" ? "border-primary shadow-[0_0_10px_rgba(232,93,146,0.15)]" : "border-white/5"
+                    }`}
+                  />
+                  <label
+                    className={`absolute left-5 pointer-events-none transition-all duration-300 uppercase tracking-wider font-label-caps text-[10px] font-bold ${
+                      focusedField === "name" || formData.name
+                        ? "top-2 text-primary text-xs scale-90 origin-left"
+                        : "top-5 text-on-surface-variant"
+                    }`}
+                  >
+                    Full Name
+                  </label>
+                  {errors.name && (
+                    <span className="text-xs text-error flex items-center gap-1 mt-1 pl-1">
+                      <AlertCircle size={12} /> {errors.name}
+                    </span>
+                  )}
+                </div>
 
-            <div className="flex flex-col gap-2">
-              <label className="font-label-caps text-xs text-on-surface-variant tracking-widest uppercase">Message</label>
-              <textarea rows={4} className="w-full bg-surface/50 border border-outline-variant rounded-xl px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all backdrop-blur-md resize-none" placeholder="How can we help you?"></textarea>
-            </div>
+                {/* Email field */}
+                <div className="relative w-full">
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onFocus={() => handleFocus("email")}
+                    onBlur={() => handleBlur("email")}
+                    className={`w-full bg-surface/40 border rounded-2xl px-5 py-4 text-white focus:outline-none transition-all duration-300 backdrop-blur-md pt-6 pb-2 ${
+                      errors.email ? "border-error" : focusedField === "email" ? "border-primary shadow-[0_0_10px_rgba(232,93,146,0.15)]" : "border-white/5"
+                    }`}
+                  />
+                  <label
+                    className={`absolute left-5 pointer-events-none transition-all duration-300 uppercase tracking-wider font-label-caps text-[10px] font-bold ${
+                      focusedField === "email" || formData.email
+                        ? "top-2 text-primary text-xs scale-90 origin-left"
+                        : "top-5 text-on-surface-variant"
+                    }`}
+                  >
+                    Email Address
+                  </label>
+                  {errors.email && (
+                    <span className="text-xs text-error flex items-center gap-1 mt-1 pl-1">
+                      <AlertCircle size={12} /> {errors.email}
+                    </span>
+                  )}
+                </div>
 
-            <button type="button" className="w-full py-4 mt-2 rounded-xl bg-gradient-to-r from-primary to-primary-container text-white font-bold tracking-widest neon-glow hover:neon-glow-hover transition-all duration-300 flex items-center justify-center gap-3">
-              SEND MESSAGE
-              <Send size={18} />
-            </button>
-          </form>
-        </motion.div>
-      </motion.div>
+                {/* Phone field */}
+                <div className="relative w-full">
+                  <input
+                    type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    onFocus={() => handleFocus("phone")}
+                    onBlur={() => handleBlur("phone")}
+                    className={`w-full bg-surface/40 border rounded-2xl px-5 py-4 text-white focus:outline-none transition-all duration-300 backdrop-blur-md pt-6 pb-2 ${
+                      errors.phone ? "border-error" : focusedField === "phone" ? "border-primary shadow-[0_0_10px_rgba(232,93,146,0.15)]" : "border-white/5"
+                    }`}
+                  />
+                  <label
+                    className={`absolute left-5 pointer-events-none transition-all duration-300 uppercase tracking-wider font-label-caps text-[10px] font-bold ${
+                      focusedField === "phone" || formData.phone
+                        ? "top-2 text-primary text-xs scale-90 origin-left"
+                        : "top-5 text-on-surface-variant"
+                    }`}
+                  >
+                    Phone Number
+                  </label>
+                  {errors.phone && (
+                    <span className="text-xs text-error flex items-center gap-1 mt-1 pl-1">
+                      <AlertCircle size={12} /> {errors.phone}
+                    </span>
+                  )}
+                </div>
+
+                {/* Message field */}
+                <div className="relative w-full">
+                  <textarea
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    onFocus={() => handleFocus("message")}
+                    onBlur={() => handleBlur("message")}
+                    className={`w-full bg-surface/40 border rounded-2xl px-5 py-4 text-white focus:outline-none transition-all duration-300 backdrop-blur-md pt-7 pb-2 resize-none ${
+                      errors.message ? "border-error" : focusedField === "message" ? "border-primary shadow-[0_0_10px_rgba(232,93,146,0.15)]" : "border-white/5"
+                    }`}
+                  />
+                  <label
+                    className={`absolute left-5 pointer-events-none transition-all duration-300 uppercase tracking-wider font-label-caps text-[10px] font-bold ${
+                      focusedField === "message" || formData.message
+                        ? "top-2 text-primary text-xs scale-90 origin-left"
+                        : "top-5 text-on-surface-variant"
+                    }`}
+                  >
+                    Tell us about your learning goals
+                  </label>
+                  {errors.message && (
+                    <span className="text-xs text-error flex items-center gap-1 mt-1 pl-1">
+                      <AlertCircle size={12} /> {errors.message}
+                    </span>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-4 mt-2 rounded-2xl bg-gradient-to-r from-primary to-inverse-primary text-white font-bold tracking-widest uppercase text-xs font-label-caps neon-glow hover:neon-glow-hover transition-all duration-300 flex items-center justify-center gap-3"
+                >
+                  Submit Registration
+                  <Send size={16} />
+                </button>
+              </motion.form>
+            ) : (
+              <motion.div
+                key="success"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex flex-col items-center justify-center py-12 text-center"
+              >
+                <div className="w-16 h-16 rounded-full bg-success/15 border border-success/30 flex items-center justify-center text-success mb-6 shadow-lg shadow-success/10">
+                  <CheckCircle size={32} />
+                </div>
+                <h3 className="font-display-lg text-2xl font-bold text-white mb-2">Message Sent!</h3>
+                <p className="text-on-surface-variant text-sm max-w-sm leading-relaxed mb-6">
+                  Thank you for registering. Our student coordinator will contact you shortly to complete enrollment.
+                </p>
+                <span className="w-8 h-1 bg-primary rounded-full animate-pulse"></span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+        </div>
+      </div>
     </section>
   );
 }

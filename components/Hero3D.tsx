@@ -2,7 +2,60 @@
 
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { ArrowRight, PlayCircle, Atom, Dna, Rocket, BookOpen, Microscope } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronDown, Compass, Award } from "lucide-react";
+
+// Simple Magnetic Button Wrapper Component
+function MagneticButton({ children, className, href }: { children: React.ReactNode; className: string; href?: string }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  
+  const springX = useSpring(x, { stiffness: 150, damping: 15 });
+  const springY = useSpring(y, { stiffness: 150, damping: 15 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left - width / 2;
+    const mouseY = e.clientY - rect.top - height / 2;
+    // Limit pull to 18px max
+    x.set(mouseX * 0.35);
+    y.set(mouseY * 0.35);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  if (href) {
+    return (
+      <motion.div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ x: springX, y: springY }}
+        className="w-full sm:w-auto"
+      >
+        <a href={href} className={className}>
+          {children}
+        </a>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ x: springX, y: springY }}
+      className="w-full sm:w-auto"
+    >
+      <button className={className}>
+        {children}
+      </button>
+    </motion.div>
+  );
+}
 
 export default function Hero3D() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,166 +65,83 @@ export default function Hero3D() {
   });
 
   const smoothScroll = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 90,
+    damping: 25,
     restDelta: 0.001
   });
 
-  const y1 = useTransform(smoothScroll, [0, 1], [0, 200]);
-  const y2 = useTransform(smoothScroll, [0, 1], [0, -150]);
-  const y3 = useTransform(smoothScroll, [0, 1], [0, 300]);
-  const scale = useTransform(smoothScroll, [0, 1], [1, 1.1]);
-  const opacity = useTransform(smoothScroll, [0, 0.8], [1, 0]);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useTransform(mouseY, [-0.5, 0.5], [10, -10]);
-  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
+  // Scroll animations
+  const yText = useTransform(smoothScroll, [0, 0.5], [0, 80]);
+  const opacityText = useTransform(smoothScroll, [0, 0.45], [1, 0]);
 
   return (
     <section 
       ref={containerRef} 
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative min-h-[100vh] flex items-center justify-center pt-24 pb-20 overflow-hidden perspective-1000"
-      style={{ position: 'relative' }}
+      className="relative min-h-[100vh] flex items-center justify-center pt-24 pb-20 overflow-hidden"
     >
+      {/* 3D Scene viewport fits right here as fixed background behind this */}
       
-      {/* 3D Floating Elements Background */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <motion.div style={{ y: y1, x: 50 }} className="absolute top-[20%] left-[10%] opacity-40">
-          <Atom size={80} className="text-primary animate-[spin_20s_linear_infinite]" />
-        </motion.div>
-        <motion.div style={{ y: y2, x: -50 }} className="absolute top-[60%] right-[15%] opacity-30">
-          <Dna size={120} className="text-inverse-primary animate-[spin_30s_linear_infinite_reverse]" />
-        </motion.div>
-        <motion.div style={{ y: y3 }} className="absolute bottom-[10%] left-[20%] opacity-20">
-          <Microscope size={60} className="text-secondary" />
-        </motion.div>
-      </div>
-
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 min-h-[calc(100vh-80px)]">
         
-        {/* Left Content Area */}
+        {/* Left Content Area (Grid span 7 for spacious look) */}
         <motion.div 
-          style={{ opacity, y: useTransform(smoothScroll, [0, 1], [0, 100]) }}
-          className="flex flex-col gap-8 items-center text-center lg:items-start lg:text-left"
-          initial={{ opacity: 0, x: -50 }}
+          style={{ opacity: opacityText, y: yText }}
+          className="flex flex-col gap-6 items-center text-center lg:items-start lg:text-left lg:col-span-7"
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
+          {/* Sparkles tag */}
           <div className="glass-panel px-4 py-2 rounded-full border border-primary/30 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_var(--color-primary)]"></span>
-            <span className="font-label-caps text-label-caps text-primary tracking-widest uppercase">Next-Gen Science Education</span>
+            <span className="font-label-caps text-xs tracking-widest text-primary uppercase font-bold">Digital Academy Sri Lanka</span>
           </div>
           
-          <h1 className="font-display-2xl text-[clamp(40px,5vw,72px)] leading-[1.1] text-on-surface font-bold tracking-tight">
-            The Cinematic Frontier of <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-container to-inverse-primary text-glow">
-              Science Learning
+          {/* Main Title */}
+          <h1 className="font-display-2xl text-[40px] sm:text-[56px] md:text-[68px] leading-[1.05] text-on-surface font-bold tracking-tight select-none">
+            Making Science & <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-container to-success text-glow">
+              Mathematics Simple
             </span>
           </h1>
           
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl text-lg md:text-xl">
-            Immerse yourself in a premium laboratory experience. High-tech, interactive environments designed for the modern student aiming for academic excellence.
+          {/* Description */}
+          <p className="font-body-lg text-sm sm:text-base md:text-lg text-on-surface-variant max-w-xl leading-relaxed mt-2">
+            Interactive lessons, proven teaching methods, and personalized guidance that help students achieve academic excellence.
           </p>
           
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 mt-4 w-full sm:w-auto">
-            <button className="w-full sm:w-auto justify-center px-8 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-surface font-label-caps text-label-caps tracking-widest neon-glow hover:neon-glow-hover transition-all duration-300 shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.2)] flex items-center gap-3 relative overflow-hidden group">
+          {/* CTAs with Magnetic Effect */}
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 mt-6 w-full sm:w-auto items-center">
+            
+            <MagneticButton href="#contact" className="w-full sm:w-auto justify-center px-8 py-4 rounded-full bg-gradient-to-r from-primary to-inverse-primary text-white font-label-caps text-xs tracking-widest uppercase font-semibold neon-glow hover:neon-glow-hover transition-all duration-300 shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.25)] flex items-center gap-3 relative overflow-hidden group">
               <span className="absolute inset-0 bg-white/20 translate-y-[-100%] group-hover:translate-y-[100%] transition-transform duration-500 ease-in-out"></span>
-              ENROLL NOW
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="w-full sm:w-auto justify-center px-8 py-4 rounded-full glass-panel text-on-surface font-label-caps text-label-caps tracking-widest border border-outline hover:bg-surface/20 hover:border-primary/50 transition-all duration-300 flex items-center gap-3 group">
-              <PlayCircle size={20} className="text-primary group-hover:scale-110 transition-transform" />
-              WATCH INTRO
-            </button>
+              Start Learning
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </MagneticButton>
+
+            <MagneticButton href="#courses" className="w-full sm:w-auto justify-center px-8 py-4 rounded-full glass-panel text-on-surface font-label-caps text-xs tracking-widest uppercase font-semibold border border-outline-variant hover:bg-white/5 hover:border-primary/40 transition-all duration-300 flex items-center gap-3 group">
+              Explore Classes
+              <BookOpen size={16} className="text-primary group-hover:scale-110 transition-transform" />
+            </MagneticButton>
+            
           </div>
         </motion.div>
 
-        {/* Right 3D Visual Area */}
-        <motion.div 
-          style={{ 
-            scale, 
-            opacity, 
-            y: useTransform(smoothScroll, [0, 1], [0, -50]),
-            rotateX,
-            rotateY
-          }}
-          className="relative w-full h-[500px] md:h-[700px] flex justify-center items-center perspective-1000 transform-style-3d"
-          initial={{ opacity: 0, z: -100 }}
-          animate={{ opacity: 1, z: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-        >
-          {/* Futuristic Orbs */}
-          <div className="absolute w-[120%] h-[120%] rounded-full border border-primary/10 border-dashed animate-[spin_60s_linear_infinite] z-0 transform translate-z-[-50px]"></div>
-          <div className="absolute w-[90%] h-[90%] rounded-full border border-secondary/20 animate-[spin_40s_linear_infinite_reverse] z-0 transform translate-z-[-20px]"></div>
-          
-          {/* Main 3D Container */}
-          <motion.div 
-            className="relative z-10 w-[90%] h-[90%] glass-panel rounded-3xl border border-white/40 overflow-hidden shadow-2xl transform-style-3d group"
-            style={{ translateZ: 50 }}
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          >
-            <img 
-              alt="Science Laboratory" 
-              className="w-full h-full object-cover opacity-90 mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700 scale-105 group-hover:scale-100" 
-              src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1000"
-            />
-            
-            {/* Overlay Glass Cards */}
-            <motion.div 
-              className="absolute top-8 -left-4 glass-panel p-4 rounded-xl border border-white/50 shadow-lg flex items-center gap-4 backdrop-blur-md transform translate-z-[100px]"
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1, duration: 0.5 }}
-            >
-              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                <Rocket className="text-primary" size={20} />
-              </div>
-              <div>
-                <p className="font-label-caps text-xs text-on-surface-variant">Acceleration</p>
-                <p className="font-bold text-on-surface text-lg">Future Ready</p>
-              </div>
-            </motion.div>
+        {/* Right side spacer for the 3D scene (spans 5 columns) */}
+        <div className="lg:col-span-5 hidden lg:block pointer-events-none h-[400px]"></div>
 
-            <motion.div 
-              className="absolute bottom-8 -right-4 glass-panel p-5 rounded-xl border border-white/50 shadow-lg flex flex-col gap-3 backdrop-blur-md min-w-[200px] transform translate-z-[120px]"
-              initial={{ x: 20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
-            >
-              <div className="flex justify-between items-center">
-                <span className="font-label-caps text-xs text-on-surface-variant">Success Rate</span>
-                <span className="font-bold text-primary">98%</span>
-              </div>
-              <div className="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
-                <motion.div 
-                  className="h-full bg-gradient-to-r from-primary to-inverse-primary"
-                  initial={{ width: 0 }}
-                  animate={{ width: "98%" }}
-                  transition={{ delay: 1.5, duration: 1 }}
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
       </div>
+
+      {/* Down Scroll Indicator */}
+      <motion.div 
+        style={{ opacity: opacityText }}
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer pointer-events-none z-10"
+      >
+        <span className="font-label-caps text-[9px] tracking-widest text-on-surface-variant uppercase font-semibold">Scroll to Learn</span>
+        <ChevronDown size={14} className="text-on-surface-variant" />
+      </motion.div>
     </section>
   );
 }

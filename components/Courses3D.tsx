@@ -1,140 +1,174 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { useRef } from "react";
-import { BookMarked, Calculator, FlaskConical, Languages } from "lucide-react";
+import { motion } from "framer-motion";
+import { Calculator, FlaskConical, Sparkles, BookOpen, Clock, ArrowRight } from "lucide-react";
 import { TiltCard } from "./ui/TiltCard";
 
 const courses = [
   {
-    title: "Advanced Physics",
-    level: "A-Level",
-    icon: <FlaskConical size={32} />,
-    color: "from-primary to-primary-container",
-    delay: 0,
-    marginTopClass: "mt-0"
+    title: "Grade 6 Academy",
+    description: "Foundational mathematics and basic scientific observation techniques for young minds.",
+    subjects: ["Mathematics", "Science"],
+    icon: <BookOpen className="text-primary" size={24} />,
+    duration: "4 hours / week",
+    color: "from-primary/20 to-transparent",
+    glow: "rgba(232, 93, 146, 0.3)"
   },
   {
-    title: "Mathematics",
-    level: "O-Level & A-Level",
-    icon: <Calculator size={32} />,
-    color: "from-inverse-primary to-primary",
-    delay: 0.1,
-    marginTopClass: "mt-0 sm:mt-10"
+    title: "Grade 7 Academy",
+    description: "Introduction to algebraic concepts, chemical elements, and natural energy laws.",
+    subjects: ["Mathematics", "Science"],
+    icon: <BookOpen className="text-primary" size={24} />,
+    duration: "4 hours / week",
+    color: "from-primary/20 to-transparent",
+    glow: "rgba(232, 93, 146, 0.3)"
   },
   {
-    title: "Chemistry",
-    level: "A-Level",
-    icon: <BookMarked size={32} />,
-    color: "from-secondary to-primary-container",
-    delay: 0.2,
-    marginTopClass: "mt-0 sm:mt-20"
+    title: "Grade 8 Academy",
+    description: "Focus on equations, biological systems, basic electricity, and structural geometry.",
+    subjects: ["Mathematics", "Science"],
+    icon: <BookOpen className="text-primary" size={24} />,
+    duration: "4 hours / week",
+    color: "from-primary/20 to-transparent",
+    glow: "rgba(232, 93, 146, 0.3)"
   },
   {
-    title: "English Lit",
-    level: "O-Level",
-    icon: <Languages size={32} />,
-    color: "from-primary-container to-inverse-primary",
-    delay: 0.3,
-    marginTopClass: "mt-0 sm:mt-10"
+    title: "Grade 9 Academy",
+    description: "Intermediate algebra, force vectors, and human physiological structures.",
+    subjects: ["Mathematics", "Science"],
+    icon: <BookOpen className="text-primary" size={24} />,
+    duration: "4 hours / week",
+    color: "from-primary/20 to-transparent",
+    glow: "rgba(232, 93, 146, 0.3)"
+  },
+  {
+    title: "Grade 10 Academy",
+    description: "Advanced trigonometry, chemical equations, and physical optics prep for O/L.",
+    subjects: ["Mathematics", "Science"],
+    icon: <Calculator className="text-success" size={24} />,
+    duration: "5 hours / week",
+    color: "from-success/20 to-transparent",
+    glow: "rgba(74, 222, 128, 0.2)"
+  },
+  {
+    title: "Grade 11 Academy",
+    description: "Full syllabus optimization, past paper analysis, and intensive G.C.E. O/L prep.",
+    subjects: ["Mathematics", "Science"],
+    icon: <Calculator className="text-success" size={24} />,
+    duration: "5 hours / week",
+    color: "from-success/20 to-transparent",
+    glow: "rgba(74, 222, 128, 0.2)"
+  },
+  {
+    title: "O/L Revision Core",
+    description: "Fast-track mock paper session, revision of 5-year exam papers, and time shortcut blueprints.",
+    subjects: ["Math & Science Revision"],
+    icon: <FlaskConical className="text-primary-container" size={24} />,
+    duration: "6 hours / week",
+    color: "from-primary-container/20 to-transparent",
+    glow: "rgba(247, 168, 196, 0.3)",
+    highlight: true
   }
 ];
 
 export default function Courses3D() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const smoothScroll = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
-  const scale = useTransform(smoothScroll, [0, 0.5, 1], [0.8, 1, 0.8]);
-  const opacity = useTransform(smoothScroll, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
   return (
-    <section 
-      ref={containerRef} 
-      className="relative min-h-[100vh] py-32 flex items-center justify-center overflow-hidden perspective-1000"
-      style={{ position: 'relative' }}
-    >
-      
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col lg:flex-row items-center gap-16">
+    <section id="courses" className="relative py-24 md:py-36 bg-background overflow-hidden border-t border-outline-variant">
+      {/* Background glow */}
+      <div className="absolute top-[30%] left-[-10%] w-[400px] h-[400px] bg-primary/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full relative z-10">
         
-        {/* Left Text Area */}
-        <motion.div 
-          style={{ opacity, y: useTransform(smoothScroll, [0, 1], [50, -50]) }}
-          className="flex-1 max-w-xl flex flex-col items-center text-center lg:items-start lg:text-left"
-        >
-          <div className="inline-flex glass-panel px-4 py-2 rounded-full border border-primary/30 items-center gap-2 mb-6">
-            <span className="w-2 h-2 rounded-full bg-inverse-primary animate-pulse shadow-[0_0_10px_var(--color-inverse-primary)]"></span>
-            <span className="font-label-caps text-label-caps text-inverse-primary tracking-widest uppercase">Premium Curriculums</span>
-          </div>
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex glass-panel px-4 py-2 rounded-full border border-primary/30 items-center gap-2 mb-6"
+          >
+            <Sparkles size={16} className="text-primary" />
+            <span className="font-label-caps text-xs tracking-widest text-primary uppercase font-bold">Curriculums</span>
+          </motion.div>
           
-          <h2 className="font-display-2xl text-[clamp(40px,4vw,56px)] leading-[1.1] text-on-surface mb-6 font-bold tracking-tight">
-            Cinematic Learning <br/> 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-inverse-primary text-glow">Experiences</span>
+          <h2 className="font-display-2xl text-[36px] md:text-[56px] leading-[1.1] text-white font-bold">
+            Available Class <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container text-glow">
+              Programs
+            </span>
           </h2>
           
-          <p className="font-body-lg text-lg text-on-surface-variant mb-8">
-            Every course is designed as a masterpiece. Interactive, visually stunning, and academically rigorous. We transform traditional textbooks into immersive digital journeys.
+          <p className="font-body-lg text-base md:text-lg text-on-surface-variant mt-6">
+            Find the right level. All grades follow structured lesson sheets, interactive experiments, and intensive exam paper classes.
           </p>
+        </div>
 
-          <button className="px-8 py-4 rounded-full bg-surface-variant/50 text-on-surface font-label-caps text-label-caps tracking-widest border border-outline hover:bg-primary/10 hover:border-primary transition-all duration-300 flex items-center gap-3 group backdrop-blur-md">
-            EXPLORE ALL COURSES
-            <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </button>
-        </motion.div>
-
-        {/* Right 3D Cards Grid */}
-        <motion.div 
-          style={{ scale, opacity }}
-          className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full relative"
-        >
-          {/* Floating glow behind cards */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-primary/20 to-inverse-primary/20 blur-[120px] pointer-events-none rounded-full"></div>
-          
-          {courses.map((course, index) => (
+        {/* Courses Matrix */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+          {courses.map((course, i) => (
             <motion.div
-              key={index}
-              initial={{ y: 50, opacity: 0 }}
+              key={i}
+              initial={{ y: 40, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: course.delay, duration: 0.8, ease: "easeOut" }}
-              className={`${course.marginTopClass}`}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.08, duration: 0.6, ease: "easeOut" }}
+              className={`${course.highlight ? "md:col-span-2 lg:col-span-3" : "col-span-1"}`}
+              style={{ contentVisibility: 'auto' }}
             >
-              <TiltCard className="w-full h-full rounded-3xl" innerClassName="p-8" glowColor="rgba(255, 30, 140, 0.4)">
-                <div 
-                  className="w-full h-full flex flex-col transform-style-3d group" 
-                  style={{ transform: "translateZ(40px)" }}
-                >
-                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${course.color} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500 rounded-full`} style={{ transform: "translateZ(-20px)" }}></div>
-                  
-                  <div 
-                    className={`w-14 h-14 rounded-full bg-gradient-to-br ${course.color} flex items-center justify-center text-white mb-12 shadow-lg transition-transform duration-300 group-hover:scale-110`}
-                    style={{ transform: "translateZ(60px)" }}
-                  >
-                    {course.icon}
+              <TiltCard 
+                className="w-full h-full rounded-3xl" 
+                innerClassName={`p-8 border bg-surface/40 h-full flex flex-col justify-between ${
+                  course.highlight ? "border-primary/40 bg-gradient-to-r from-primary/5 via-transparent to-transparent" : "border-white/5"
+                }`}
+                glowColor={course.glow}
+              >
+                <div className="flex flex-col h-full transform-style-3d group">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-background to-surface border border-white/10 flex items-center justify-center shadow-md">
+                      {course.icon}
+                    </div>
+                    {course.highlight && (
+                      <span className="bg-primary/20 text-primary border border-primary/30 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase font-label-caps animate-pulse">
+                        Most Enrolled
+                      </span>
+                    )}
                   </div>
-                  
-                  <p className="font-label-caps text-xs text-on-surface-variant mb-2 tracking-widest uppercase" style={{ transform: "translateZ(30px)" }}>{course.level}</p>
-                  <h3 className="font-headline-lg text-2xl text-on-surface font-bold" style={{ transform: "translateZ(50px)" }}>{course.title}</h3>
-                  
-                  <div 
-                    className="absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-4 transition-all duration-300"
-                    style={{ transform: "translateZ(40px)" }}
-                  >
-                    <span className="material-symbols-outlined text-primary">arrow_forward</span>
+
+                  <div className={course.highlight ? "grid grid-cols-1 lg:grid-cols-3 gap-6 items-center" : ""}>
+                    <div className={course.highlight ? "lg:col-span-2" : ""}>
+                      <h3 className="font-display-lg text-xl md:text-2xl font-bold text-white mb-2">{course.title}</h3>
+                      <p className="text-on-surface-variant text-sm leading-relaxed mb-6">{course.description}</p>
+                    </div>
+
+                    <div className={`flex flex-col gap-4 ${course.highlight ? "lg:col-span-1 lg:pl-6 border-t lg:border-t-0 lg:border-l border-white/5 pt-4 lg:pt-0" : ""}`}>
+                      {/* Subjects tags */}
+                      <div className="flex flex-wrap gap-2 mb-2">
+                        {course.subjects.map((sub, idx) => (
+                          <span key={idx} className="bg-white/5 border border-white/5 text-on-surface-variant px-2.5 py-1 rounded-lg text-xs font-semibold">
+                            {sub}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Class Details */}
+                      <div className="flex items-center gap-2 text-xs text-on-surface-variant font-mono">
+                        <Clock size={14} className="text-primary" />
+                        <span>{course.duration}</span>
+                      </div>
+
+                      {/* Enroll CTA */}
+                      <a href="#contact" className="mt-4 w-full py-3 rounded-xl bg-gradient-to-r from-primary/15 to-primary/5 hover:from-primary hover:to-inverse-primary border border-primary/20 hover:border-transparent text-white font-bold text-xs tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 group-hover:bg-primary">
+                        Enroll Now
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
                   </div>
+
                 </div>
               </TiltCard>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
       </div>
     </section>

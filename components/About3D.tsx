@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
-import { Microscope, Globe2, Lightbulb, Zap } from "lucide-react";
+import { Award, BookOpen, GraduationCap, Users } from "lucide-react";
 
 export default function About3D() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,91 +12,116 @@ export default function About3D() {
   });
 
   const smoothScroll = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 90,
+    damping: 25,
     restDelta: 0.001
   });
 
-  const y1 = useTransform(smoothScroll, [0, 1], [100, -100]);
-  const y2 = useTransform(smoothScroll, [0, 1], [150, -150]);
-  const y3 = useTransform(smoothScroll, [0, 1], [200, -200]);
-  
-  const opacity = useTransform(smoothScroll, [0, 0.3, 0.8, 1], [0, 1, 1, 0]);
+  // Parallax shifts for floating elements
+  const yFloatingCard1 = useTransform(smoothScroll, [0, 1], [-40, 40]);
+  const yFloatingCard2 = useTransform(smoothScroll, [0, 1], [40, -40]);
+  const opacity = useTransform(smoothScroll, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
     <section 
       ref={containerRef} 
-      className="relative min-h-[100vh] pt-48 pb-32 flex items-center justify-center overflow-hidden perspective-1000"
-      style={{ position: 'relative' }}
+      className="relative min-h-[90vh] py-24 md:py-36 flex items-center justify-center overflow-hidden border-t border-outline-variant bg-background"
     >
-      <div className="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop w-full relative z-10">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full relative z-10">
         
-        <motion.div 
-          style={{ opacity, y: useTransform(smoothScroll, [0, 1], [50, -50]) }}
-          className="text-center max-w-3xl mx-auto mb-24"
-        >
-          <div className="inline-flex glass-panel px-4 py-2 rounded-full border border-primary/30 items-center gap-2 mb-6">
-            <span className="font-label-caps text-label-caps text-primary tracking-widest uppercase">The Academy</span>
-          </div>
-          <h2 className="font-display-2xl text-[clamp(32px,4vw,56px)] leading-[1.2] text-on-surface mb-6">
-            Redefining the <span className="text-glow text-primary">Science</span> of Learning
-          </h2>
-          <p className="font-body-lg text-lg text-on-surface-variant">
-            We are not just a tutoring center. We are an innovation hub designed to unlock your ultimate academic potential through immersive, technology-driven education.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
-          {/* Background Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
+          {/* Left Column: Visual Profile & Floating Glass Cards (Grid Span 5) */}
+          <div className="lg:col-span-5 relative flex justify-center items-center h-[400px] md:h-[500px]">
+            {/* Main Profile Shield/Glow container */}
+            <motion.div 
+              style={{ opacity }}
+              className="relative w-72 h-96 rounded-[40px] bg-gradient-to-br from-primary/10 to-transparent border border-white/5 shadow-2xl flex items-center justify-center overflow-hidden backdrop-blur-md"
+            >
+              {/* Animated background rings inside profile */}
+              <div className="absolute w-64 h-64 border border-primary/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
+              <div className="absolute w-48 h-48 border border-success/15 rounded-full border-dashed animate-[spin_15s_linear_infinite_reverse]"></div>
+              
+              {/* Centered Icon Representing Teacher profile */}
+              <div className="relative z-10 flex flex-col items-center gap-4 text-center">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-inverse-primary flex items-center justify-center shadow-lg shadow-primary/20">
+                  <GraduationCap size={44} className="text-white" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-white text-lg">Senior Tutor</h3>
+                  <p className="text-xs text-on-surface-variant uppercase tracking-widest font-label-caps mt-1">Math & Science Specialist</p>
+                </div>
+              </div>
+            </motion.div>
 
-          {/* Card 1 */}
-          <motion.div 
-            style={{ y: y1 }}
-            className="glass-panel p-8 rounded-3xl border border-white/40 shadow-xl hover:shadow-2xl hover:border-primary/50 transition-shadow transition-colors duration-500 transform-style-3d group"
-            whileHover={{ rotateY: 5, rotateX: 5, z: 20 }}
-          >
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Microscope size={32} className="text-primary" />
-            </div>
-            <h3 className="font-headline-lg text-2xl mb-4 text-on-surface">Scientific Approach</h3>
-            <p className="text-on-surface-variant leading-relaxed">
-              Our curriculum is built on cognitive science principles, ensuring information is absorbed, retained, and applied with maximum efficiency.
-            </p>
-          </motion.div>
+            {/* Floating Glass Card 1 (Top Left) */}
+            <motion.div
+              style={{ y: yFloatingCard1 }}
+              className="absolute top-8 left-[-16px] md:left-[-32px] glass-panel p-4 rounded-2xl border border-white/10 shadow-lg flex items-center gap-3 backdrop-blur-md max-w-[200px]"
+            >
+              <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
+                <Award className="text-primary" size={20} />
+              </div>
+              <div>
+                <h4 className="text-xs font-bold text-white font-headline-md">10+ Years Exp.</h4>
+                <p className="text-[10px] text-on-surface-variant font-label-caps uppercase mt-0.5">Trained Educator</p>
+              </div>
+            </motion.div>
 
-          {/* Card 2 */}
-          <motion.div 
-            style={{ y: y2 }}
-            className="glass-panel p-8 rounded-3xl border border-white/40 shadow-xl hover:shadow-2xl hover:border-primary/50 transition-shadow transition-colors duration-500 transform-style-3d group lg:-mt-12"
-            whileHover={{ rotateY: 0, rotateX: 5, z: 20 }}
-          >
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-inverse-primary/20 to-inverse-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Zap size={32} className="text-inverse-primary" />
-            </div>
-            <h3 className="font-headline-lg text-2xl mb-4 text-on-surface">Accelerated Pacing</h3>
-            <p className="text-on-surface-variant leading-relaxed">
-              We eliminate redundancies. Our targeted learning modules accelerate your progress, preparing you for Edexcel & Cambridge exams faster.
-            </p>
-          </motion.div>
+            {/* Floating Glass Card 2 (Bottom Right) */}
+            <motion.div
+              style={{ y: yFloatingCard2 }}
+              className="absolute bottom-8 right-[-16px] md:right-[-32px] glass-panel p-4 rounded-2xl border border-white/10 shadow-lg flex items-center gap-3 backdrop-blur-md max-w-[220px]"
+            >
+              <div className="w-10 h-10 rounded-xl bg-success/20 flex items-center justify-center shrink-0">
+                <Users className="text-success" size={20} />
+              </div>
+              <div>
+                <h4 className="text-xs font-bold text-white font-headline-md">B.Sc. Graduate</h4>
+                <p className="text-[10px] text-on-surface-variant font-label-caps uppercase mt-0.5">Concept-first teaching</p>
+              </div>
+            </motion.div>
+          </div>
 
-          {/* Card 3 */}
+          {/* Right Column: Teacher Story & Narrative (Grid Span 7) */}
           <motion.div 
-            style={{ y: y3 }}
-            className="glass-panel p-8 rounded-3xl border border-white/40 shadow-xl hover:shadow-2xl hover:border-primary/50 transition-shadow transition-colors duration-500 transform-style-3d group"
-            whileHover={{ rotateY: -5, rotateX: 5, z: 20 }}
+            style={{ opacity, y: useTransform(smoothScroll, [0, 1], [40, -40]) }}
+            className="flex flex-col gap-6 lg:col-span-7 text-center lg:text-left"
           >
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary/20 to-secondary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Globe2 size={32} className="text-secondary" />
+            <div className="inline-flex glass-panel px-4 py-2 rounded-full border border-primary/30 items-center gap-2 self-center lg:self-start">
+              <BookOpen size={16} className="text-primary" />
+              <span className="font-label-caps text-xs tracking-widest text-primary uppercase font-bold">The Educator</span>
             </div>
-            <h3 className="font-headline-lg text-2xl mb-4 text-on-surface">Global Standards</h3>
-            <p className="text-on-surface-variant leading-relaxed">
-              Designed to meet and exceed international benchmarks, setting you up for success in universities worldwide.
+            
+            <h2 className="font-display-2xl text-[36px] md:text-[56px] leading-[1.1] text-white font-bold">
+              Simplifying the <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-container to-success text-glow">
+                Concepts that Matter
+              </span>
+            </h2>
+            
+            <p className="font-body-lg text-base md:text-lg text-on-surface-variant leading-relaxed">
+              Tuition isn&apos;t about memorizing formulas. It&apos;s about developing a core spatial and logical understanding. With over a decade of classroom experience, our classes bridge the gap between abstract textbook theories and clear, practical knowledge.
             </p>
+            
+            <p className="font-body-md text-sm md:text-base text-on-surface-variant leading-relaxed">
+              We specialize in preparing Grade 6-11 and O/L students for exam success, combining rigorous past-paper practices with next-generation visual graphics that keep students fully engaged.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 mt-4 justify-center lg:justify-start">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#E85D92]"></span>
+                <span className="text-sm font-semibold text-white">English & Sinhala Medium</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-success shadow-[0_0_8px_#4ADE80]"></span>
+                <span className="text-sm font-semibold text-white">Proven O/L A+ Blueprint</span>
+              </div>
+            </div>
           </motion.div>
 
         </div>
+
       </div>
     </section>
   );

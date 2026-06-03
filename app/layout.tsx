@@ -13,8 +13,17 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-  title: 'edusimply.lk - The Cinematic Frontier of Digital Education',
-  description: 'Experience a cinematic approach to education. High-tech, immersive learning environments designed for the modern student aiming for academic excellence.',
+  title: 'EduSimply - Mathematics & Science Tuition Sri Lanka | Grade 6-11 & O/L',
+  description: 'Learn Mathematics and Science from the best. Premium, interactive educational platform for Grade 6-11 and O/L students in Sri Lanka. Apple-quality learning experiences.',
+  keywords: 'Science Teacher Sri Lanka, Mathematics Teacher Sri Lanka, O/L Science Classes, O/L Maths Classes, Online Science Classes, Online Mathematics Classes, EduSimply.lk',
+  openGraph: {
+    title: 'EduSimply - Making Science & Mathematics Simple',
+    description: 'Learn Mathematics and Science from the best. Premium, interactive educational platform for Grade 6-11 and O/L students in Sri Lanka.',
+    url: 'https://edusimply.lk',
+    siteName: 'EduSimply',
+    locale: 'en_LK',
+    type: 'website',
+  }
 };
 
 export default function RootLayout({
@@ -22,6 +31,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // JSON-LD Structured Data Schema
+  const jsonLdSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationEvent",
+    "name": "EduSimply Mathematics & Science Classes",
+    "description": "Premium educational tutoring classes for Grade 6-11 and O/L students in Sri Lanka.",
+    "organizer": {
+      "@type": "Organization",
+      "name": "EduSimply",
+      "url": "https://edusimply.lk"
+    },
+    "coursePrerequisites": "Grade 6-11 Students",
+    "educationalLevel": "Secondary Education (O/L)",
+    "about": ["Mathematics", "Science"]
+  };
+
   return (
     <html
       lang="en"
@@ -29,6 +54,10 @@ export default function RootLayout({
     >
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
+        />
       </head>
       <body className="bg-background text-on-background font-body-md overflow-x-hidden relative grid-bg min-h-full flex flex-col">{children}</body>
     </html>
