@@ -3,15 +3,15 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
+    { label: "About EduSimply", href: "#about-edusimply" },
+    { label: "About Tutor", href: "#about-tutor" },
     { label: "Subjects", href: "#subjects" },
-    { label: "Timeline", href: "#timeline" },
-    { label: "Courses", href: "#courses" },
-    { label: "Simulations", href: "#simulations" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -20,10 +20,21 @@ export default function Navbar() {
       {/* Brand logo */}
       <Link
         href="/"
-        className="text-xl md:text-2xl font-black text-on-surface italic tracking-tighter drop-shadow-[0_0_8px_rgba(232,93,146,0.3)] font-['Space_Grotesk'] flex items-center gap-2"
+        className="flex items-center gap-3 group"
       >
-        <span className="text-primary font-black">edu</span>simply
-        <span className="text-primary font-black">.lk</span>
+        <div className="relative w-9 h-9 overflow-hidden rounded-xl border border-outline shadow-sm backdrop-blur-sm bg-white/40 p-0.5 transition-transform group-hover:scale-105">
+          <div className="relative w-full h-full rounded-[10px] overflow-hidden">
+            <Image
+              src="/images/logo.jpeg"
+              alt="EduSimply Logo"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+        <span className="text-xl md:text-2xl font-black text-on-surface italic tracking-tighter font-['Space_Grotesk'] flex items-center">
+          <span className="text-primary font-black">edu</span>simply
+        </span>
       </Link>
 
       {/* Desktop Navigation Links */}
@@ -63,15 +74,12 @@ export default function Navbar() {
             ))}
           </nav>
           <div className="flex flex-col gap-3 pt-4 border-t border-outline-variant">
-            <button className="w-full py-3 rounded-xl border border-outline-variant text-on-surface-variant hover:text-primary text-xs font-bold tracking-widest uppercase">
-              Portal Login
-            </button>
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}
               className="w-full py-3 rounded-xl bg-gradient-to-r from-primary to-inverse-primary text-white text-xs font-bold tracking-widest uppercase text-center flex items-center justify-center gap-2"
             >
-              Join Class
+              Get in Touch
               <ArrowRight size={14} />
             </a>
           </div>

@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #F2F8F2;
+  --color-background: #FAFBFD;
   --color-surface: #FFFFFF;
-  --color-surface-variant: #F9FBF9;
-  --color-on-background: #1A1B1F;
-  --color-on-surface: #1A1B1F;
-  --color-on-surface-variant: #5F6E65;
-  --color-primary: #E85D92;
-  --color-primary-container: #F5A1BD;
-  --color-inverse-primary: #E34476;
-  --color-success: #D9EAD8;
-  --color-error: #E73C75;
-  --color-outline: #E2ECE5;
-  --color-outline-variant: #EEF4F0;
+  --color-surface-variant: #F3F4F6;
+  --color-on-background: #09090B;
+  --color-on-surface: #09090B;
+  --color-on-surface-variant: #52525B;
+  --color-primary: #0078E6;
+  --color-primary-container: #E6F0FA;
+  --color-inverse-primary: #0062C4;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-outline: #E4E4E7;
+  --color-outline-variant: #F4F4F5;
 
   --spacing-margin-desktop: 40px;
   --spacing-max-width: 1280px;
@@ -50,15 +50,15 @@
 }
 
 html, body {
-  background-color: #F2F8F2;
-  color: #1A1B1F;
+  background-color: #FAFBFD;
+  color: #09090B;
 }
 
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-/* Updated Utilities for edusimply.lk Light Premium Aesthetic */
+/* Updated Utilities for edusimply Light Premium Aesthetic */
 .glass-panel {
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(20px);
@@ -67,16 +67,16 @@ html, body {
 }
 
 .neon-glow {
-  box-shadow: 0 0 20px 0px rgba(232, 93, 146, 0.15);
+  box-shadow: 0 0 20px 0px rgba(0, 120, 230, 0.15);
 }
 
 .neon-glow-hover:hover {
-  box-shadow: 0 0 30px 5px rgba(232, 93, 146, 0.25);
-  border-color: rgba(232, 93, 146, 0.4);
+  box-shadow: 0 0 30px 5px rgba(0, 120, 230, 0.25);
+  border-color: rgba(0, 120, 230, 0.4);
 }
 
 .text-glow {
-  text-shadow: 0 0 12px rgba(232, 93, 146, 0.3);
+  text-shadow: 0 0 12px rgba(0, 120, 230, 0.3);
 }
 
 .grid-bg {
@@ -86,40 +86,8 @@ html, body {
   background-size: 50px 50px;
 }
 
-@keyframes dna-spin {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
-}
-
-.animate-dna {
-  animation: dna-spin 4s linear infinite;
-}
-
 .transform-style-3d {
   transform-style: preserve-3d;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) translateX(0px); }
-  50% { transform: translateY(-15px) translateX(10px); }
-}
-
-.animate-float {
-  animation: float 8s ease-in-out infinite;
-}
-
-.animate-float-slow {
-  animation: float 12s ease-in-out infinite reverse;
-}
-
-@keyframes pan-slow {
-  0% { transform: translate(-50%, -50%) perspective(1200px) rotateY(-8deg) rotateX(-3deg) scale(1.0); }
-  50% { transform: translate(-45%, -55%) perspective(1200px) rotateY(8deg) rotateX(3deg) scale(1.1); }
-  100% { transform: translate(-52%, -48%) perspective(1200px) rotateY(-4deg) rotateX(1deg) scale(1.05); }
-}
-
-.animate-bg-pan {
-  animation: pan-slow 20s ease-in-out infinite alternate;
 }
 
 /* Custom Scrollbar for Light Theme */
@@ -127,14 +95,14 @@ html, body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F2F8F2;
+  background: #FAFBFD;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D9EAD8;
+  background: #E4E4E7;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E85D92;
+  background: #0078E6;
 }
 
 /* Light Theme Visibility & Contrast Overrides */
