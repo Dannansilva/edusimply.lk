@@ -18,10 +18,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 h-20 bg-background/70 backdrop-blur-xl border-b border-outline-variant shadow-sm">
       {/* Brand logo */}
-      <Link
-        href="/"
-        className="flex items-center gap-3 group"
-      >
+      <Link href="/" className="flex items-center gap-3 group">
         <div className="relative w-9 h-9 overflow-hidden rounded-xl border border-outline shadow-sm backdrop-blur-sm bg-white/40 p-0.5 transition-transform group-hover:scale-105">
           <div className="relative w-full h-full rounded-[10px] overflow-hidden">
             <Image
@@ -33,7 +30,7 @@ export default function Navbar() {
           </div>
         </div>
         <span className="text-xl md:text-2xl font-black text-on-surface italic tracking-tighter font-['Space_Grotesk'] flex items-center">
-          <span className="text-primary font-black">edu</span>simply
+          <span className="text-primary font-black">Edu</span>Simply
         </span>
       </Link>
 

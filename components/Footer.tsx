@@ -27,7 +27,7 @@ export default function Footer() {
               </div>
             </div>
             <span className="text-xl font-black text-white italic tracking-tighter font-['Space_Grotesk'] flex items-center">
-              <span className="text-primary font-black">edu</span>simply
+              <span className="text-primary font-black">Edu</span>Simply
             </span>
           </Link>
           <p className="text-on-surface-variant text-xs leading-relaxed max-w-[240px] font-body-md mt-2">
@@ -94,7 +94,7 @@ export default function Footer() {
 
       {/* Footer Bottom copyright */}
       <div className="max-w-[1440px] mx-auto pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-on-surface-variant font-label-caps uppercase tracking-widest relative z-10">
-        <p>© {currentYear} edusimply. All rights reserved.</p>
+        <p>© {currentYear} EduSimply. All rights reserved.</p>
         <div className="flex gap-6">
           <Link className="hover:text-white transition-colors" href="#">
             Privacy Policy
