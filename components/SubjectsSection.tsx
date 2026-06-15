@@ -102,8 +102,7 @@ export default function SubjectsSection() {
             <motion.div
               key={i}
               variants={itemVariants}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="glass-panel p-8 rounded-[32px] border border-white/5 shadow-lg flex flex-col justify-between hover:border-primary/20 hover:bg-surface/5 transition-all duration-300"
+              className="glass-panel glass-panel-interactive p-8 rounded-[32px] border border-white/5 shadow-lg flex flex-col justify-between"
             >
               <div>
                 <div className="w-12 h-12 rounded-2xl glass-panel border border-white/10 flex items-center justify-center mb-6 shadow-md bg-white/5">
@@ -136,8 +135,7 @@ export default function SubjectsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          whileHover={{ y: -4, transition: { duration: 0.2 } }}
-          className="glass-panel p-8 md:p-12 rounded-[32px] border border-white/5 shadow-xl max-w-6xl mx-auto mt-12 bg-surface/5"
+          className="glass-panel glass-panel-interactive p-8 md:p-12 rounded-[32px] border border-white/5 shadow-xl max-w-6xl mx-auto mt-12 bg-surface/5"
         >
           <div className="flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
             <div className="max-w-md">

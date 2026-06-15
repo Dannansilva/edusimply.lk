@@ -75,7 +75,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
       </head>
-      <body className="bg-background text-on-background font-body-md overflow-x-hidden relative grid-bg min-h-full flex flex-col">
+      <body className="bg-background text-on-background font-body-md overflow-x-hidden relative min-h-full flex flex-col">
+        <div className="noise-overlay" />
         {children}
       </body>
     </html>

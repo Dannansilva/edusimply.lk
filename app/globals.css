@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #FAFBFD;
-  --color-surface: #FFFFFF;
-  --color-surface-variant: #F3F4F6;
-  --color-on-background: #09090B;
-  --color-on-surface: #09090B;
-  --color-on-surface-variant: #52525B;
+  --color-background: #030303;
+  --color-surface: #0E0E10;
+  --color-surface-variant: #18181B;
+  --color-on-background: #F4F4F5;
+  --color-on-surface: #FFFFFF;
+  --color-on-surface-variant: #A1A1AA;
   --color-primary: #0078E6;
-  --color-primary-container: #E6F0FA;
-  --color-inverse-primary: #0062C4;
+  --color-primary-container: rgba(0, 120, 230, 0.1);
+  --color-inverse-primary: #60A5FA;
   --color-success: #10B981;
   --color-error: #EF4444;
-  --color-outline: #E4E4E7;
-  --color-outline-variant: #F4F4F5;
+  --color-outline: #27272A;
+  --color-outline-variant: #18181B;
 
   --spacing-margin-desktop: 40px;
   --spacing-max-width: 1280px;
@@ -50,20 +50,35 @@
 }
 
 html, body {
-  background-color: #FAFBFD;
-  color: #09090B;
+  background: radial-gradient(circle at 50% 0%, #0d1224 0%, #030303 70%) fixed;
+  color: #F4F4F5;
 }
 
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-/* Updated Utilities for edusimply Light Premium Aesthetic */
+/* Updated Utilities for edusimply Premium Dark Aesthetic */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.6), 0 8px 32px 0 rgba(0, 0, 0, 0.04);
+  background: rgba(14, 14, 16, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.08), 
+    0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-panel-interactive {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-interactive:hover {
+  background: rgba(18, 18, 22, 0.6);
+  border-color: rgba(0, 120, 230, 0.35) !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15), 
+    0 12px 40px 0 rgba(0, 120, 230, 0.08);
+  transform: translateY(-4px);
 }
 
 .neon-glow {
@@ -76,72 +91,39 @@ html, body {
 }
 
 .text-glow {
-  text-shadow: 0 0 12px rgba(0, 120, 230, 0.3);
-}
-
-.grid-bg {
-  background-image: 
-      linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
-  background-size: 50px 50px;
+  text-shadow: 0 0 12px rgba(0, 120, 230, 0.4);
 }
 
 .transform-style-3d {
   transform-style: preserve-3d;
 }
 
-/* Custom Scrollbar for Light Theme */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar for Dark Theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAFBFD;
+  background: #030303;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E4E4E7;
+  background: #27272A;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #0078E6;
 }
 
-/* Light Theme Visibility & Contrast Overrides */
 
-/* 1. Map transparent white border classes to the light outline variable */
-.border-white\/5:not(footer *):not([class*="bg-black"]), 
-.border-white\/10:not(footer *):not([class*="bg-black"]), 
-.border-white\/20:not(footer *):not([class*="bg-black"]), 
-.border-white\/30:not(footer *):not([class*="bg-black"]) {
-  border-color: var(--color-outline) !important;
-}
-
-/* 2. Override text-white classes for headings, paragraphs, and spans to ensure high readability,
-   excluding the dark footer, buttons, links, and badges */
-h1.text-white:not(footer *), 
-h2.text-white:not(footer *), 
-h3.text-white:not(footer *), 
-h4.text-white:not(footer *), 
-h5.text-white:not(footer *), 
-h6.text-white:not(footer *),
-p.text-white:not(footer *):not(button *):not(a *):not([class*="bg-"]):not([class*="from-"]),
-span.text-white:not(footer *):not(button *):not(a *):not([class*="bg-"]):not([class*="from-"]):not(.font-mono),
-div.text-white:not(footer *):not(button *):not(a *):not([class*="bg-"]):not([class*="from-"]):not([class*="bg-black"]):not(.relative) {
-  color: var(--color-on-background) !important;
-}
-
-/* 3. Ensure input and textarea field text is completely readable */
-input.text-white, textarea.text-white {
-  color: var(--color-on-background) !important;
-}
-
-/* 4. Adjust custom transparent background panels in light mode */
-.bg-surface\/40:not(footer *) {
-  background-color: rgba(255, 255, 255, 0.8) !important;
-}
-
-/* 5. Correct SVG overlays in cards to be visible with light gray stroke */
-svg.text-white:not(footer *) {
-  color: var(--color-on-surface-variant) !important;
-  opacity: 0.12 !important;
-}
 

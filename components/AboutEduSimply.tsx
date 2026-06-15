@@ -122,8 +122,7 @@ export default function AboutEduSimply() {
             {/* Core Values Card */}
             <motion.div
               variants={itemVariants}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="glass-panel p-6 sm:p-8 rounded-[32px] border border-white/5 shadow-xl bg-surface/5"
+              className="glass-panel glass-panel-interactive p-6 sm:p-8 rounded-[32px] border border-white/5 shadow-xl bg-surface/5"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
@@ -147,8 +146,7 @@ export default function AboutEduSimply() {
             {/* Inspiration Story Card */}
             <motion.div
               variants={itemVariants}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="glass-panel p-6 sm:p-8 rounded-[32px] border border-white/5 shadow-xl bg-surface/5"
+              className="glass-panel glass-panel-interactive p-6 sm:p-8 rounded-[32px] border border-white/5 shadow-xl bg-surface/5"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary">

@@ -32,7 +32,7 @@ export default function Hero3D() {
       {/* Centered Large Background Watermark Logo */}
       <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden select-none">
         <motion.div 
-          className="relative w-[340px] h-[340px] sm:w-[520px] sm:h-[520px] md:w-[680px] md:h-[680px] opacity-[0.09] mix-blend-multiply"
+          className="relative w-[340px] h-[340px] sm:w-[520px] sm:h-[520px] md:w-[680px] md:h-[680px] opacity-[0.04] invert mix-blend-screen"
           animate={{ 
             scale: [1, 1.03, 1],
             rotate: [0, 2, 0, -2, 0]
