@@ -166,7 +166,7 @@ export default function SubjectsSection() {
 
               <div>
                 <h4 className="text-xs uppercase font-label-caps tracking-wider text-primary font-bold mb-3">
-                  Syllabus Covered:
+                  Subjects:
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {cat.subjects.map((sub, idx) => (
