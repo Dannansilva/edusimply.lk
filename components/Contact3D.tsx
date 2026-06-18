@@ -194,6 +194,7 @@ export default function Contact3D() {
               {/* Name field */}
               <div className="relative w-full">
                 <input
+                  suppressHydrationWarning
                   type="text"
                   name="name"
                   value={formData.name}
@@ -227,6 +228,7 @@ export default function Contact3D() {
               {/* Email field */}
               <div className="relative w-full">
                 <input
+                  suppressHydrationWarning
                   type="email"
                   name="email"
                   value={formData.email}
@@ -260,6 +262,7 @@ export default function Contact3D() {
               {/* Phone field */}
               <div className="relative w-full">
                 <input
+                  suppressHydrationWarning
                   type="text"
                   name="phone"
                   value={formData.phone}
@@ -293,6 +296,7 @@ export default function Contact3D() {
               {/* Message field */}
               <div className="relative w-full">
                 <textarea
+                  suppressHydrationWarning
                   name="message"
                   rows={4}
                   value={formData.message}
