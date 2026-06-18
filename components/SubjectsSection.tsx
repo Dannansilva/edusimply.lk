@@ -49,7 +49,7 @@ export default function SubjectsSection() {
     {
       title: "Lower High School Tutoring",
       description:
-        "For students from Year 6 to Year 9. Strengthen understanding of mathematics and science, improve school performance, and prepare for higher-level study.",
+        "For students from Year 7 to Year 10. Strengthen understanding of mathematics and science, improve school performance, and prepare for higher-level study.",
       icon: <Calculator className="text-primary" size={24} />,
       subjects: [
         "Mathematics",

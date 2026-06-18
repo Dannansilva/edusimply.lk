@@ -46,7 +46,10 @@ export default function AboutEduSimply() {
 
           <h2 className="font-display-2xl text-[36px] md:text-[56px] leading-[1.1] text-white font-bold">
             About <br />
-            <span className="font-logo font-black tracking-tight"><span className="text-[#0B3B60]">Edu</span><span className="text-[#0078E6]">Simply</span></span>
+            <span className="font-logo font-black tracking-tight">
+              <span className="text-[#0B3B60]">Edu</span>
+              <span className="text-[#0078E6]">Simply</span>
+            </span>
           </h2>
         </motion.div>
 
@@ -90,11 +93,8 @@ export default function AboutEduSimply() {
               className="font-body-md text-sm md:text-base text-on-surface-variant leading-relaxed"
             >
               EduSimply offers both one-on-one tutoring and group sessions,
-              providing flexible learning options for students and families.
-              Alongside regular lessons, students can receive personalised
-              revision notes, mock examinations, homework support, exam
-              preparation guidance, study skills coaching and mentoring to help
-              them build confidence and work towards their academic goals
+              available online and in person, providing flexible learning
+              options for students and families.
             </motion.p>
 
             <motion.p

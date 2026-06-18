@@ -69,7 +69,7 @@ export default function Footer() {
               Primary School Tutoring
             </span>
             <span className="text-on-surface-variant">
-              Lower High School (Yr 6-9)
+              Lower High School (Yr 7-10)
             </span>
             <span className="text-on-surface-variant">
               WACE ATAR, Cambridge & Edexcel

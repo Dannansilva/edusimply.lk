@@ -33,7 +33,7 @@ export default function About3D() {
       className="relative py-20 md:py-25 overflow-hidden border-t border-outline-variant bg-background"
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-16 md:mb-24">
           {/* Left Column: Visual Profile & Floating Glass Cards (Grid Span 5) */}
           <div className="lg:col-span-5 flex flex-col items-center gap-4">
             {/* Main Profile Shield/Glow container */}
@@ -132,11 +132,11 @@ export default function About3D() {
               variants={itemVariants}
               className="font-body-lg text-base md:text-lg text-on-surface-variant leading-relaxed"
             >
-              Miss Gomes holds a Bachelor of Biomedical Science and received an
-              Academic Excellence Award. She is also completing a Master of
-              Medical and Health Science by Research, building on her strong
-              academic background in science and health research, with future
-              plans to complete a PhD.
+              Miss Gomes holds a Bachelor of Science (Biomedical Science) degree
+              and was awarded for academic excellence. She is also completing a
+              Master of Medical and Health Science by Research, building on her
+              strong academic background in science and health research, with
+              future plans to complete a PhD.
             </motion.p>
 
             <motion.p
@@ -158,56 +158,63 @@ export default function About3D() {
               structured, and student-centred, with a focus on helping each
               learner feel supported rather than overwhelmed.
             </motion.p>
-
-            {/* Video Experience Showcase */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-4 w-full rounded-[24px] overflow-hidden border border-outline shadow-xl relative aspect-video bg-surface/5"
-            >
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/-VTXEqO9ubQ"
-                title="Pudamini Gomes Experience"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                className="absolute top-0 left-0 w-full h-full"
-              ></iframe>
-            </motion.div>
-
-            {/* Why Families Choose EduSimply Subsection */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-4 border-t border-outline-variant pt-6 flex flex-col gap-4 text-left"
-            >
-              <h3 className="font-headline-md text-lg font-bold text-white uppercase tracking-wider">
-                Why Families Choose EduSimply
-              </h3>
-              <p className="text-sm text-on-surface-variant leading-relaxed">
-                EduSimply is built on trust, care and clear communication.
-                Parents are kept informed through progress updates and feedback,
-                while students are guided through lessons that match their pace,
-                learning style and goals
-              </p>
-              <p className="text-sm text-on-surface-variant leading-relaxed">
-                From exam preparation to building confidence, EduSimply is here
-                to make learning feel simple, achievable, and encouraging.
-              </p>
-              <div className="flex items-center gap-2 mt-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#0078E6]"></span>
-                <span className="font-headline-md italic text-xs sm:text-sm text-primary font-semibold flex items-center">
-                  <span className="font-logo font-black normal-case not-italic tracking-tight text-base sm:text-lg mr-1">
-                    <span className="text-[#0B3B60]">Edu</span>
-                    <span className="text-[#0078E6]">Simply</span>
-                  </span>{" "}
-                  — Where Learning Feels Simple
-                </span>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
+
+        {/* Cinematic Video Showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-5xl mx-auto w-full rounded-[24px] sm:rounded-[40px] overflow-hidden border border-outline shadow-[0_20px_50px_rgba(0,0,0,0.1)] relative aspect-video bg-surface/5 mb-16 md:mb-24"
+        >
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/-VTXEqO9ubQ"
+            title="Pudamini Gomes Experience"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="absolute top-0 left-0 w-full h-full"
+          ></iframe>
+        </motion.div>
+
+        {/* Why Families Choose EduSimply Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-4xl mx-auto flex flex-col gap-6 text-center items-center"
+        >
+          <h3 className="font-headline-md text-2xl md:text-3xl font-bold text-white uppercase tracking-wider">
+            Why Families Choose EduSimply
+          </h3>
+          <p className="text-sm md:text-base text-on-surface-variant leading-relaxed max-w-2xl">
+            EduSimply is built on trust, care and clear communication. Parents
+            are kept informed through progress updates and feedback, while
+            students are guided through lessons that match their pace, learning
+            style and goals.
+          </p>
+          <p className="text-sm md:text-base text-on-surface-variant leading-relaxed max-w-2xl">
+            From exam preparation to building confidence, EduSimply is here to
+            make learning feel simple, achievable, and encouraging.
+          </p>
+
+          <div className="flex items-center justify-center gap-3 mt-4 glass-panel px-6 py-3 rounded-full border border-primary/20">
+            <span className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#0078E6]"></span>
+            <span className="font-headline-md italic text-sm md:text-base text-primary font-semibold flex items-center">
+              <span className="font-logo font-black normal-case not-italic tracking-tight text-lg md:text-xl mr-2">
+                <span className="text-[#0B3B60]">Edu</span>
+                <span className="text-[#0078E6]">Simply</span>
+              </span>{" "}
+              — Where Learning Feels Simple
+            </span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

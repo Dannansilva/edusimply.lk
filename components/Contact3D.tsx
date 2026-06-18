@@ -65,17 +65,31 @@ export default function Contact3D() {
     return Object.keys(tempErrors).length === 0;
   };
 
+  const WHATSAPP_NUMBER = "61426377543"; // Australia WhatsApp
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
+      const message = 
+        `*New Tutoring Enquiry from EduSimply Website*\n\n` +
+        `*Name:* ${formData.name}\n` +
+        `*Email:* ${formData.email}\n` +
+        `*Phone:* ${formData.phone}\n\n` +
+        `*Learning Goals:*\n${formData.message}`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+      // Show success state briefly then redirect
       setIsSubmitted(true);
-      // Simulate API submit delay
       setTimeout(() => {
+        window.open(whatsappUrl, "_blank");
         setFormData({ name: "", email: "", phone: "", message: "" });
         setIsSubmitted(false);
-      }, 5000);
+      }, 1000);
     }
   };
+
 
   return (
     <section
@@ -341,11 +355,11 @@ export default function Contact3D() {
                 <CheckCircle size={32} />
               </div>
               <h3 className="font-display-lg text-2xl font-bold text-white mb-2">
-                Message Sent!
+                Opening WhatsApp...
               </h3>
               <p className="text-on-surface-variant text-sm max-w-sm leading-relaxed mb-6">
-                Thank you for registering. Our student coordinator will contact
-                you shortly to complete enrollment.
+                Your enquiry is ready! WhatsApp will open with your message
+                pre-filled. Just hit send to reach Miss Pudamini directly.
               </p>
               <span className="w-8 h-1 bg-primary rounded-full animate-pulse"></span>
             </div>
