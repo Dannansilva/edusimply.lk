@@ -31,6 +31,7 @@
   --font-headline-xl: var(--font-space-grotesk), sans-serif;
   --font-display-2xl: var(--font-space-grotesk), sans-serif;
   --font-display-lg: var(--font-space-grotesk), sans-serif;
+  --font-logo: var(--font-montserrat), sans-serif;
 
   --text-body-lg: 18px;
   --text-body-lg--line-height: 1.6;

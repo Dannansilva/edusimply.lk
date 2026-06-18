@@ -46,9 +46,7 @@ export default function AboutEduSimply() {
 
           <h2 className="font-display-2xl text-[36px] md:text-[56px] leading-[1.1] text-white font-bold">
             About <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-inverse-primary text-glow">
-              EduSimply
-            </span>
+            <span className="font-logo font-black tracking-tight"><span className="text-[#0B3B60]">Edu</span><span className="text-[#0078E6]">Simply</span></span>
           </h2>
         </motion.div>
 

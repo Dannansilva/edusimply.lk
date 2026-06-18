@@ -29,8 +29,9 @@ export default function Navbar() {
             />
           </div>
         </div>
-        <span className="text-xl md:text-2xl font-black text-on-surface italic tracking-tighter font-['Space_Grotesk'] flex items-center">
-          <span className="text-primary font-black">Edu</span>Simply
+        <span className="text-xl md:text-2xl font-black tracking-tight font-logo flex items-center">
+          <span className="text-[#0B3B60]">Edu</span>
+          <span className="text-[#0078E6]">Simply</span>
         </span>
       </Link>
 

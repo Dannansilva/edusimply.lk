@@ -8,6 +8,11 @@ import { motion, Variants } from "framer-motion";
 export default function Hero3D() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const startYear = 2021;
+  const experienceYears = new Date().getFullYear() - startYear;
+  const words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+  const experienceWord = experienceYears <= 10 ? words[experienceYears] : experienceYears;
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -97,11 +102,13 @@ export default function Hero3D() {
               topics, build confidence and work towards their academic goals
             </p>
             <p className="font-body-md text-xs sm:text-sm text-on-surface-variant max-w-2xl">
-              With over 5 years of tutoring experience, Miss Gomes has supported
+              With over {experienceWord} years of tutoring experience, Miss Gomes has guided
               students across Australia and internationally through
-              personalised, student-centred lessons.Her teaching approach uses
-              simple explanations, visual learning, active recall and warm
-              guidance, so students feel supported rather than overwhelmed.
+              personalised, student-centred lessons. Her teaching style focuses
+              on breaking complex ideas into simple explanations, using visuals,
+              active recall, exam-style practice, and supportive guidance to
+              help students build confidence and feel capable in their
+              learning..
             </p>
           </motion.div>
 
@@ -110,8 +117,12 @@ export default function Hero3D() {
             variants={itemVariants}
             className="flex items-center gap-2 border-y border-primary/20 py-2.5 px-6 mt-3"
           >
-            <span className="font-headline-md italic text-xs sm:text-sm text-primary font-semibold tracking-wider">
-              EduSimply — Where Learning Feels Simple
+            <span className="font-headline-md italic text-xs sm:text-sm text-primary font-semibold tracking-wider flex items-center">
+              <span className="font-logo font-black normal-case not-italic tracking-tight text-base sm:text-lg mr-1">
+                <span className="text-[#0B3B60]">Edu</span>
+                <span className="text-[#0078E6]">Simply</span>
+              </span>{" "}
+              — Where Learning Feels Simple
             </span>
           </motion.div>
         </motion.div>

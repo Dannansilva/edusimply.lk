@@ -95,9 +95,7 @@ export default function Contact3D() {
 
           <h2 className="font-display-2xl text-[36px] md:text-[50px] leading-[1.1] text-white font-bold">
             Contact <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-inverse-primary text-glow">
-              EduSimply
-            </span>
+            <span className="font-logo font-black tracking-tight"><span className="text-[#0B3B60]">Edu</span><span className="text-[#0078E6]">Simply</span></span>
           </h2>
 
           <p className="font-body-md text-sm text-on-surface-variant leading-relaxed">
@@ -182,8 +180,8 @@ export default function Contact3D() {
             </p>
             <div className="flex items-center gap-2 mt-1">
               <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#0078E6]"></span>
-              <span className="font-headline-md italic text-xs text-primary font-semibold">
-                EduSimply — Where Learning Feels Simple
+              <span className="font-headline-md italic text-xs text-primary font-semibold flex items-center">
+                <span className="font-logo font-black normal-case not-italic tracking-tight text-base sm:text-lg mr-1"><span className="text-[#0B3B60]">Edu</span><span className="text-[#0078E6]">Simply</span></span> — Where Learning Feels Simple
               </span>
             </div>
           </div>

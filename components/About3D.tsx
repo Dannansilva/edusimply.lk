@@ -8,6 +8,9 @@ import { motion, Variants } from "framer-motion";
 export default function About3D() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const startYear = 2021;
+  const experienceYears = new Date().getFullYear() - startYear;
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -86,7 +89,7 @@ export default function About3D() {
               <div className="flex items-center gap-4 mt-3 text-xs text-on-surface-variant font-medium pt-2 border-t border-outline w-full justify-center">
                 <div className="flex items-center gap-1.5">
                   <Award size={14} className="text-primary" />
-                  <span>5+ Years Experience</span>
+                  <span>{experienceYears}+ Years Experience</span>
                 </div>
                 <span className="w-1 h-1 rounded-full bg-outline"></span>
                 <div className="flex items-center gap-1.5">
@@ -176,8 +179,8 @@ export default function About3D() {
               </p>
               <div className="flex items-center gap-2 mt-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#0078E6]"></span>
-                <span className="font-headline-md italic text-xs sm:text-sm text-primary font-semibold">
-                  EduSimply — Where Learning Feels Simple
+                <span className="font-headline-md italic text-xs sm:text-sm text-primary font-semibold flex items-center">
+                  <span className="font-logo font-black normal-case not-italic tracking-tight text-base sm:text-lg mr-1"><span className="text-[#0B3B60]">Edu</span><span className="text-[#0078E6]">Simply</span></span> — Where Learning Feels Simple
                 </span>
               </div>
             </motion.div>

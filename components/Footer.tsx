@@ -26,8 +26,9 @@ export default function Footer() {
                 />
               </div>
             </div>
-            <span className="text-xl font-black text-white italic tracking-tighter font-['Space_Grotesk'] flex items-center">
-              <span className="text-primary font-black">Edu</span>Simply
+            <span className="text-xl font-black tracking-tight font-logo flex items-center">
+              <span className="text-[#0B3B60]">Edu</span>
+              <span className="text-[#0078E6]">Simply</span>
             </span>
           </Link>
           <p className="text-on-surface-variant text-xs leading-relaxed max-w-[240px] font-body-md mt-2">

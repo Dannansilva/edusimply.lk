@@ -114,13 +114,6 @@ export default function SubjectsSection() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center max-w-3xl mx-auto mb-20 md:mb-24"
         >
-          <div className="inline-flex glass-panel px-4 py-2 rounded-full border border-primary/30 items-center gap-2 mb-6">
-            <Sparkles size={16} className="text-primary" />
-            <span className="font-label-caps text-xs tracking-widest text-primary uppercase font-bold">
-              Our Syllabus
-            </span>
-          </div>
-
           <h2 className="font-display-2xl text-[36px] md:text-[56px] leading-[1.1] text-white font-bold">
             Subjects We <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-inverse-primary text-glow">
