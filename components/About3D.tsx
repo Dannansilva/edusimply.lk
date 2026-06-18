@@ -30,7 +30,7 @@ export default function About3D() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[90vh] py-24 md:py-36 flex items-center justify-center overflow-hidden border-t border-outline-variant bg-background"
+      className="relative py-20 md:py-25 overflow-hidden border-t border-outline-variant bg-background"
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -159,6 +159,24 @@ export default function About3D() {
               learner feel supported rather than overwhelmed.
             </motion.p>
 
+            {/* Video Experience Showcase */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-4 w-full rounded-[24px] overflow-hidden border border-outline shadow-xl relative aspect-video bg-surface/5"
+            >
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/-VTXEqO9ubQ"
+                title="Pudamini Gomes Experience"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full"
+              ></iframe>
+            </motion.div>
+
             {/* Why Families Choose EduSimply Subsection */}
             <motion.div
               variants={itemVariants}
@@ -180,7 +198,11 @@ export default function About3D() {
               <div className="flex items-center gap-2 mt-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#0078E6]"></span>
                 <span className="font-headline-md italic text-xs sm:text-sm text-primary font-semibold flex items-center">
-                  <span className="font-logo font-black normal-case not-italic tracking-tight text-base sm:text-lg mr-1"><span className="text-[#0B3B60]">Edu</span><span className="text-[#0078E6]">Simply</span></span> — Where Learning Feels Simple
+                  <span className="font-logo font-black normal-case not-italic tracking-tight text-base sm:text-lg mr-1">
+                    <span className="text-[#0B3B60]">Edu</span>
+                    <span className="text-[#0078E6]">Simply</span>
+                  </span>{" "}
+                  — Where Learning Feels Simple
                 </span>
               </div>
             </motion.div>

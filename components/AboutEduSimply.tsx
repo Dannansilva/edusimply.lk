@@ -26,7 +26,7 @@ export default function AboutEduSimply() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[90vh] py-24 md:py-36 flex items-center justify-center overflow-hidden border-t border-outline-variant bg-background"
+      className="relative py-24 md:py-36 overflow-hidden border-t border-outline-variant bg-background"
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full relative z-10">
         {/* Title Header */}
