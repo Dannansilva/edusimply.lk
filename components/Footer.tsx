@@ -82,7 +82,7 @@ export default function Footer() {
         {/* Column 4: Contact Directory */}
         <div className="flex flex-col gap-4">
           <h4 className="text-white text-xs font-bold font-label-caps uppercase tracking-wider">
-            Inquiries
+            Enquiries
           </h4>
           <div className="flex flex-col gap-2.5 text-xs text-on-surface-variant">
             <p>Email: edusimply.tutoring@gmail.com</p>

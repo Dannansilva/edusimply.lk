@@ -91,17 +91,17 @@ export default function Hero3D() {
             className="flex flex-col gap-5 text-on-surface-variant leading-relaxed mt-2 text-sm sm:text-base text-center items-center"
           >
             <p className="font-body-md font-medium text-on-surface max-w-2xl">
-              At EduSimply, learning is made clear, supportive, and simple.
-              Founded by Miss Pudamini Onethra Gomes, EduSimply helps students
-              build confidence, understand difficult topics, and work towards
-              their academic goals.
+              At EduSimply, learning is made clear, supportive and simple.
+              Founded by Miss Pudamini Onethra Gomes, EduSimply provides
+              personalised tutoring that helps students understand difficult
+              topics, build confidence and work towards their academic goals
             </p>
             <p className="font-body-md text-xs sm:text-sm text-on-surface-variant max-w-2xl">
               With over 5 years of tutoring experience, Miss Gomes has supported
               students across Australia and internationally through
-              personalised, student-centred lessons. Her approach focuses on
-              simple explanations, visual learning, active recall, and warm
-              guidance, helping students feel supported rather than overwhelmed.
+              personalised, student-centred lessons.Her teaching approach uses
+              simple explanations, visual learning, active recall and warm
+              guidance, so students feel supported rather than overwhelmed.
             </p>
           </motion.div>
 

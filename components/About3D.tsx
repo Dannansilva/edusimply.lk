@@ -129,11 +129,11 @@ export default function About3D() {
               variants={itemVariants}
               className="font-body-lg text-base md:text-lg text-on-surface-variant leading-relaxed"
             >
-              Miss Gomes holds a Bachelor of Science (Biomedical Science) and
-              was awarded a Higher Academic Achievement Medal.. She is also
-              completing a Master of Medical and Health Science by Research,
-              building on her strong academic background in science and health
-              research, and looking forward to completing a PhD.
+              Miss Gomes holds a Bachelor of Biomedical Science and received an
+              Academic Excellence Award. She is also completing a Master of
+              Medical and Health Science by Research, building on her strong
+              academic background in science and health research, with future
+              plans to complete a PhD.
             </motion.p>
 
             <motion.p
@@ -149,11 +149,11 @@ export default function About3D() {
               variants={itemVariants}
               className="font-body-md text-sm md:text-base text-on-surface-variant leading-relaxed"
             >
-              Miss Gomes started EduSimply because she wanted to become the kind
-              of teacher she once wished she had, someone patient, clear,
-              encouraging, and able to make learning feel less complicated. Her
-              approach is warm, structured, and student-centred, with a focus on
-              helping each learner feel supported rather than overwhelmed.
+              EduSimply was created from Miss Gomes&apos;s passion for making
+              learning feel clear, calm and achievable for students who may feel
+              overwhelmed by difficult subjects. Her approach is warm,
+              structured, and student-centred, with a focus on helping each
+              learner feel supported rather than overwhelmed.
             </motion.p>
 
             {/* Why Families Choose EduSimply Subsection */}
@@ -165,10 +165,10 @@ export default function About3D() {
                 Why Families Choose EduSimply
               </h3>
               <p className="text-sm text-on-surface-variant leading-relaxed">
-                EduSimply is built on trust, care, and clear communication.
+                EduSimply is built on trust, care and clear communication.
                 Parents are kept informed through progress updates and feedback,
-                while students are guided with lessons that match their pace,
-                learning style, and goals.
+                while students are guided through lessons that match their pace,
+                learning style and goals
               </p>
               <p className="text-sm text-on-surface-variant leading-relaxed">
                 From exam preparation to building confidence, EduSimply is here

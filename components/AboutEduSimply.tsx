@@ -77,11 +77,12 @@ export default function AboutEduSimply() {
               variants={itemVariants}
               className="font-body-md text-sm md:text-base text-on-surface-variant leading-relaxed"
             >
-              At EduSimply, every student is taught personally by Miss Gomes.
-              Rather than using a one-size-fits-all approach, lessons are
-              adapted to suit each student&apos;s learning style, strengths, and
-              areas for improvement. Whether a student learns best through
-              visual explanations, practice questions, discussion-based
+              At EduSimply, students are personally supported by Miss Gomes
+              through lessons designed around their learning style, strengths
+              and areas for improvement. Rather than using a one-size-fits-all
+              approach, each lesson is adapted to help the student learn in the
+              way that works best for them. Whether a student learns best
+              through visual explanations, practice questions, discussion-based
               learning, or structured revision plans, lessons are designed to
               help them learn in the way that works best for them.
             </motion.p>
@@ -92,10 +93,10 @@ export default function AboutEduSimply() {
             >
               EduSimply offers both one-on-one tutoring and group sessions,
               providing flexible learning options for students and families.
-              Alongside regular lessons, students receive personalised revision
-              notes, mock examinations, homework support, exam preparation
-              guidance, study skills coaching, and mentoring to help them build
-              confidence and achieve their academic goals.
+              Alongside regular lessons, students can receive personalised
+              revision notes, mock examinations, homework support, exam
+              preparation guidance, study skills coaching and mentoring to help
+              them build confidence and work towards their academic goals
             </motion.p>
 
             <motion.p
@@ -135,9 +136,9 @@ export default function AboutEduSimply() {
               </div>
               <p className="text-sm text-on-surface-variant leading-relaxed">
                 The values at the heart of EduSimply are patience,
-                encouragement, consistency, and clear communication. Learning
-                should feel supportive rather than stressful, and students are
-                encouraged to ask questions, make mistakes, and develop
+                encouragement, consistency and clear communication. Learning
+                should feel supportive rather than stressful, so students are
+                encouraged to ask questions, make mistakes and develop
                 confidence in their abilities. Families are kept informed
                 through regular feedback and progress updates, creating a
                 collaborative approach to student success.
@@ -160,7 +161,7 @@ export default function AboutEduSimply() {
               </div>
               <p className="text-sm text-on-surface-variant leading-relaxed">
                 The inspiration behind EduSimply began during Miss Gomes&apos;s
-                own school years, where she often supported classmates and peers
+                own school years, when she often supported classmates and peers
                 with their studies. Seeing others improve their understanding,
                 gain confidence, and achieve strong results sparked a passion
                 for teaching that continued to grow over time. What started as

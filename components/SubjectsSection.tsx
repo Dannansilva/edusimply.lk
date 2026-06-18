@@ -131,7 +131,7 @@ export default function SubjectsSection() {
           <p className="font-body-lg text-base md:text-lg text-on-surface-variant mt-6">
             EduSimply provides personalised tutoring across WACE ATAR,
             Cambridge, Edexcel, university-level science subjects, lower high
-            school, and primary school. Lessons are designed to suit each
+            school and primary school. Lessons are designed to suit each
             student’s learning level, academic goals, and confidence, with a
             focus on making difficult topics easier to understand.
           </p>
@@ -203,9 +203,9 @@ export default function SubjectsSection() {
                 </h3>
               </div>
               <p className="text-sm text-on-surface-variant leading-relaxed">
-                Alongside subject tutoring, we focus on developing executive
-                study habits and confidence to help students succeed
-                independently.
+                Alongside subject tutoring, EduSimply helps students develop
+                strong study habits, active recall techniques and confidence so
+                they can become more independent learners.
               </p>
             </div>
 
