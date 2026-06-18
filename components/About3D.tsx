@@ -82,7 +82,7 @@ export default function About3D() {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <h3 className="font-bold text-on-surface text-xl">
-                Miss Pudamini Gomes
+                Miss Pudamini Onethra Gomes
               </h3>
 
               {/* Tutoring stats highlights */}
@@ -124,7 +124,7 @@ export default function About3D() {
             >
               Meet Miss <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-inverse-primary text-glow">
-                Pudamini Gomes
+                Pudamini Onethra Gomes
               </span>
             </motion.h2>
 

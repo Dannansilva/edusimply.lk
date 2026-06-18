@@ -51,13 +51,7 @@ export default function SubjectsSection() {
       description:
         "For students from Year 7 to Year 10. Strengthen understanding of mathematics and science, improve school performance, and prepare for higher-level study.",
       icon: <Calculator className="text-primary" size={24} />,
-      subjects: [
-        "Mathematics",
-        "General Science",
-        "Biology foundations",
-        "Chemistry foundations",
-        "Physics foundations",
-      ],
+      subjects: ["Mathematics", "General Science"],
     },
     {
       title: "Primary School Tutoring",

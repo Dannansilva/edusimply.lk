@@ -53,6 +53,7 @@
 html, body {
   background-color: #FAFBFD;
   color: #09090B;
+  font-family: var(--font-lexend), sans-serif;
 }
 
 .material-symbols-outlined {
