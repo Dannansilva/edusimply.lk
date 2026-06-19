@@ -70,7 +70,7 @@ export default function Contact3D() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      const message = 
+      const message =
         `*New Tutoring Enquiry from EduSimply Website*\n\n` +
         `*Name:* ${formData.name}\n` +
         `*Email:* ${formData.email}\n` +
@@ -90,7 +90,6 @@ export default function Contact3D() {
     }
   };
 
-
   return (
     <section
       id="contact"
@@ -109,7 +108,10 @@ export default function Contact3D() {
 
           <h2 className="font-display-2xl text-[36px] md:text-[50px] leading-[1.1] text-white font-bold">
             Contact <br />
-            <span className="font-logo font-black tracking-tight"><span className="text-[#0B3B60]">Edu</span><span className="text-[#0078E6]">Simply</span></span>
+            <span className="font-logo font-black tracking-tight">
+              <span className="text-[#0B3B60]">Edu</span>
+              <span className="text-[#0078E6]">Simply</span>
+            </span>
           </h2>
 
           <p className="font-body-md text-sm text-on-surface-variant leading-relaxed">
@@ -148,30 +150,6 @@ export default function Contact3D() {
                 </p>
               </div>
             </div>
-
-            <div className="flex items-center gap-4 group">
-              <div className="w-11 h-11 rounded-full glass-panel flex items-center justify-center border border-white/5 group-hover:border-primary/30 transition-colors bg-white/5">
-                <Phone className="text-primary" size={18} />
-              </div>
-              <div>
-                <p className="text-[10px] text-on-surface-variant font-label-caps uppercase font-bold tracking-wider">
-                  Australia Phone
-                </p>
-                <p className="font-bold text-white text-sm">+61 426 377 543</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 group">
-              <div className="w-11 h-11 rounded-full glass-panel flex items-center justify-center border border-white/5 group-hover:border-primary/30 transition-colors bg-white/5">
-                <Phone className="text-primary" size={18} />
-              </div>
-              <div>
-                <p className="text-[10px] text-on-surface-variant font-label-caps uppercase font-bold tracking-wider">
-                  Sri Lanka WhatsApp Only
-                </p>
-                <p className="font-bold text-white text-sm">+94 756 546 543</p>
-              </div>
-            </div>
           </div>
 
           {/* Enquiries Welcome Subsection */}
@@ -195,7 +173,11 @@ export default function Contact3D() {
             <div className="flex items-center gap-2 mt-1">
               <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#0078E6]"></span>
               <span className="font-headline-md italic text-xs text-primary font-semibold flex items-center">
-                <span className="font-logo font-black normal-case not-italic tracking-tight text-base sm:text-lg mr-1"><span className="text-[#0B3B60]">Edu</span><span className="text-[#0078E6]">Simply</span></span> — Where Learning Feels Simple
+                <span className="font-logo font-black normal-case not-italic tracking-tight text-base sm:text-lg mr-1">
+                  <span className="text-[#0B3B60]">Edu</span>
+                  <span className="text-[#0078E6]">Simply</span>
+                </span>{" "}
+                — Where Learning Feels Simple
               </span>
             </div>
           </div>

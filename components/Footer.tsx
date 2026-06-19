@@ -87,8 +87,6 @@ export default function Footer() {
           </h4>
           <div className="flex flex-col gap-2.5 text-xs text-on-surface-variant">
             <p>Email: edusimply.tutoring@gmail.com</p>
-            <p>Australia: +61 426 377 543</p>
-            <p>Sri Lanka (WhatsApp): +94 756 546 543</p>
           </div>
         </div>
       </div>
